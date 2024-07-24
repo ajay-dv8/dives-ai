@@ -11,7 +11,7 @@ type ChatInitialValuesProps = {
   chats: {
     message: string
     id: string
-    role: 'assistant' | 'user' | null
+    role: 'assistant' | 'user' | null // the user is person sending message to ai assistant is ai bot
     createdAt: Date
     seen: boolean
   }[]
@@ -30,6 +30,7 @@ type ChatInitialValuesProps = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+
 const ChatInitialValues: ChatInitialValuesProps = {
   chatRoom: undefined,
   setChatRoom: () => undefined,
@@ -45,11 +46,15 @@ const chatContext = createContext(ChatInitialValues)
 const { Provider } = chatContext
 
 export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
+  // use state and actions here to  manage chat state and actions
   const [chats, setChats] = useState(ChatInitialValues.chats)
   const [loading, setLoading] = useState(ChatInitialValues.loading)
   const [chatRoom, setChatRoom] = useState(ChatInitialValues.chatRoom)
   const [realtime, setRealtime] = useState(ChatInitialValues.realtime)
 
+  // store state values
+  // pass values to context provider
+  // this will be used in the chat component
   const values = {
     chats,
     setChats,

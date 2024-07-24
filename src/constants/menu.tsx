@@ -15,6 +15,8 @@ type SIDE_BAR_MENU_PROPS = {
   path: string;
 };
 
+
+// constants for Sidebar Menu items 
 export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
   {
     label: 'Dashboard',
@@ -96,7 +98,7 @@ export const BOT_TABS_MENU: TABS_MENU_PROPS[] = [
     icon: <ChatIcon />,
   },
   {
-    label: 'helpdesk',
+    label: 'help desk',
     icon: <HelpDeskIcon />,
   },
 ]

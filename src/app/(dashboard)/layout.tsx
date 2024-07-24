@@ -1,4 +1,5 @@
 import { onLoginUser } from '@/actions/auth'
+import { ChatProvider } from '@/context/user-chat-context'
 import React from 'react'
 
 interface LayoutProps {
@@ -15,11 +16,11 @@ const AdminLayout = async ({ children }: LayoutProps) => {
 
 
   return (
-    <div>
-      {children} 
-
-      admin layout
-    </div>
+    <ChatProvider>  
+      <div className="flex w-full h-screen">
+        {children}
+      </div>
+    </ChatProvider>
   )
 }
 
