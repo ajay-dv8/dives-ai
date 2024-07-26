@@ -28,9 +28,10 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
   return (
     <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
       <div className="flex justify-between w-full items-center">
+        {/* don't show if user has no domains  */}
         {!min && <p className="text-xs text-gray-500">DOMAINS</p>}
         <AppDrawer
-          description="add in your domain address to integrate your chatbot"
+          description="Add in your domain address to integrate your chatbot"
           title="Add your business domain"
           onOpen={
             <div className="cursor-pointer text-gray-500 rounded-full border-2">

@@ -2,6 +2,95 @@
 import { client } from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs"
 
+export const onIntegrateDomain = async (domain: string, icon: string) => {
+  const user = await currentUser();
+  if (!user) return // return if it not current user
+
+  try {
+    const subscription = await client.user.findUnique({
+      // compare user id and select domains and subscription plan  
+      // to control or restrict user plan
+      where: {
+        clerkId: user.id,
+      },
+      select: {
+        _count: {
+          select: {
+            domains: true,
+          },
+        },
+        subscription: {
+          select: {
+            plan: true
+          },
+        },
+      },
+    })
+
+    // check if domain exist
+    const domainExist = await client.user.findFirst({
+      where: {
+        clerkId: user.id,
+        domains: {
+          some: {
+            name: domain,
+          },
+        },
+      },
+    })
+
+    if (!domainExist) {
+      if (
+        (subscription?.subscription?.plan == 'STANDARD' &&
+          subscription._count.domains < 1) ||
+        (subscription?.subscription?.plan == 'PRO' &&
+          subscription._count.domains < 5) ||
+        (subscription?.subscription?.plan == 'ULTIMATE' &&
+          subscription._count.domains < 10)
+      ) {
+        // create a new domain 
+        const newDomain = await client.user.update({
+          where: {
+            clerkId: user.id,
+          },
+          data: {
+            domains: {
+              create: {
+                name: domain,
+                icon,
+                // create a new chat bot
+                chatBot: {
+                  create: {
+                    welcomeMessage:"Hey there, have a question? let's chat here",
+                  },
+                },
+              },
+            },
+          },
+        })
+
+        // if new domain has been created
+        if (newDomain) {
+          return { status: 200, message: 'Domain successfully added' }
+        }
+      }
+      // if user is creating more domain than number allowed by active plan active plan
+      return {
+        status: 400,
+        message:
+          "You've reached the maximum number of domains, upgrade your plan",
+      }
+    }
+    // if domain already exist
+    return {
+      status: 400,
+      message: 'Domain already exists',
+    }
+  } catch (error) {
+    
+  }
+}
+
 export const getSubscriptionPlan = async () => {
   try{
     const user = await currentUser();

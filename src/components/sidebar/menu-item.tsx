@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
 
-type Props = {
+type MenuItemProps = {
   size: 'max' | 'min'
   label: string
   icon: JSX.Element
@@ -11,7 +11,8 @@ type Props = {
   onSignOut?(): void
 }
 
-const MenuItem = ({ size, path, icon, label, current, onSignOut }: Props) => {
+const MenuItem = ({ size, path, icon, label, current, onSignOut }: MenuItemProps) => {
+  // switch case checks if size is max or min and show sidebar accordingly
   switch (size) {
     case 'max':
       return (

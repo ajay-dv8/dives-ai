@@ -28,12 +28,12 @@ export const Navbar = () => {
       </ul>
 
       {/* settings route is from dashboard */}
-      {/* TODO: Ajay directory system fro dashboard rout if possible */}
+      {/* TODO: Ajay fix directory system for dashboard route if possible */}
       <Link
         href="/settings"
         className="bg-green font-normal px-2 py-1 rounded text-white hover:bg-green hover:opacity-80"
       >
-        Try for Free
+        Dashboard
       </Link>
     </div>
   )

@@ -1,7 +1,9 @@
+
 // this hook is to help us extract logic instead of putting it in one component
 // helps for users to create domains by filling and submitting forms with domain info
 // and allows to re use this logic in different instances and components
 
+import { onIntegrateDomain } from '@/actions/settings';
 import { useToast } from '@/components/ui/use-toast';
 import { AddDomainSchema } from '@/schemas/settings.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,6 +34,25 @@ export const useDomain = () => {
 
   const onAddDomain = handleSubmit(async (values: FieldValues) => {
     setLoading(true)
-    const uploaded = await upload.uploadFile(values.image[0])
+    const uploaded = await upload.uploadFile(values.image[0]);
+    const domain = await onIntegrateDomain(values.domain, uploaded.uuid)
+
+    if (domain) {
+      reset()
+      setLoading(false)
+      toast({
+        title: domain.status == 200 ? 'Success' : 'Error',
+        description: domain.message,
+      })
+      router.refresh()
+    }
   })
+
+  return {
+    register,
+    onAddDomain,
+    errors,
+    loading,
+    isDomain,
+  }
 }

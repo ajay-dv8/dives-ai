@@ -1,4 +1,5 @@
 import { onLoginUser } from '@/actions/auth'
+import SideBar from '@/components/sidebar'
 import { ChatProvider } from '@/context/user-chat-context'
 import React from 'react'
 
@@ -18,7 +19,7 @@ const AdminLayout = async ({ children }: LayoutProps) => {
   return (
     <ChatProvider>  
       <div className="flex w-full h-screen">
-        {children}
+        <SideBar domains={authenticated.domain}/>
       </div>
     </ChatProvider>
   )

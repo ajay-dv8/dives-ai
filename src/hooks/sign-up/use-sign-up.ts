@@ -89,8 +89,9 @@ export const useSignUpForm = () => {
               session: completeSignUp.createdSessionId,
             })
 
+            // goto (dashboard) settings page
             setLoading(false)
-            router.push('/dashboard')
+            router.push('/settings')
           }
 
           // if the user registration is not successful, show an error message

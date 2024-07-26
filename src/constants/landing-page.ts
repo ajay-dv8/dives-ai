@@ -4,7 +4,7 @@ export const pricingCards = [
   {
     title: 'Free',
     description: 'Perfect for trying out Dives AI',
-    price: '$0',
+    price: 'Ghc.0',
     duration: '',
     highlight: 'Key features',
     features: [' 1 domain ', '10 contacts', '10 Emails per month'],
@@ -17,7 +17,6 @@ export const pricingCards = [
     duration: 'month',
     highlight: 'Key features',
     features: [' Unlimited domain ', '500 Contacts', '500 Emails'],
-
     priceId: 'price_1OYxkqFj9oKEERu1KfJGWxgN',
   },
   {
