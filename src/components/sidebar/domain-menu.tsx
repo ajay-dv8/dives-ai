@@ -60,7 +60,7 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
               />
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-green hover:bg-green/80 border-green transition-all ease-in-out duration-500"
               >
                 Add Domain
               </Button>
