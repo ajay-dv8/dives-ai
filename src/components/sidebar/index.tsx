@@ -1,9 +1,9 @@
 'use client'
-import useSideBar from '@/context/use-sidebar'
 import { cn } from '@/lib/utils'
 import React from 'react'
 import MaxMenu from './maximized-menu'
 import { MinMenu } from './minimized-menu'
+import useSideBar from '@/context/use-sidebar'
 
 interface SidebarProps {
   domains:
@@ -18,7 +18,7 @@ interface SidebarProps {
 
 // this component will be used to display some menu items and domains 
 const SideBar = ({ domains }: SidebarProps) => {
-  const { expand, onExpand, page, onSignOut } = useSideBar()
+  const { expand, onExpand, page, onSignOut } = useSideBar();
 
   return (
     <div

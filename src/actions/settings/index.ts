@@ -41,6 +41,9 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
 
     if (!domainExist) {
       if (
+        // TODO: Change standard to free
+        // check if user is creating domain under active plan
+        // and sets the number of domains allowed for that plan 
         (subscription?.subscription?.plan == 'STANDARD' &&
           subscription._count.domains < 1) ||
         (subscription?.subscription?.plan == 'PRO' &&
@@ -54,6 +57,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
             clerkId: user.id,
           },
           data: {
+            // create domain
             domains: {
               create: {
                 name: domain,
@@ -91,7 +95,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
   }
 }
 
-export const getSubscriptionPlan = async () => {
+export const onGetSubscriptionPlan = async () => {
   try{
     const user = await currentUser();
     if (!user) return // return if it not current user
