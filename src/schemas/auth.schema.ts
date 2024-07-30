@@ -10,6 +10,18 @@ export type UserRegistrationProps = {
   otp: string
 }
 
+//data type for user login 
+export type UserLoginProps = {
+email: string
+password: string
+}
+// data type for change password 
+export type ChangePasswordProps = {
+password: string
+confirmPassword: string
+}
+
+
 // Using zod for validation
 
 // tis is zod data schema for  registration
@@ -48,17 +60,6 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
     path: ['confirmEmail'],
   })
 
-  //data type for user login 
-export type UserLoginProps = {
-  email: string
-  password: string
-}
-// data type for change password 
-export type ChangePasswordProps = {
-  password: string
-  confirmPassword: string
-}
-
 // login schema component with zod validation
 export const UserLoginSchema: ZodType<UserLoginProps> = z.object({
   email: z.string().email({ message: 'You did not enter a valid email' }),
@@ -75,7 +76,7 @@ export const ChangePasswordSchema: ZodType<ChangePasswordProps> = z
   .object({
     password: z
       .string()
-      .min(8, { message: 'Your password must be atleast 8 characters long' })
+      .min(8, { message: 'Your password must be at least 8 characters long' })
       .max(64, {
         message: 'Your password can not be longer then 64 characters long',
       })

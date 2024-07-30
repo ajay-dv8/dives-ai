@@ -14,7 +14,6 @@ const AdminLayout = async ({ children }: LayoutProps) => {
   const authenticated = await onLoginUser() //get authenticated user
   if (!authenticated) return; //return null if user is not authenticated
 
-
   return (
     <ChatProvider>  
       <div className="flex w-full h-screen">

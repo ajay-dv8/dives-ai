@@ -4,7 +4,7 @@ import { z } from 'zod'
 export const MAX_UPLOAD_SIZE = 1024 * 1024 * 2 // 2MB
 
 // Define the accepted file types for uploads
-export const ACCEPTED_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg']
+export const ACCEPTED_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg', 'svg']
 
 // Define the type for DomainSettingsProps
 export type DomainSettingsProps = {
