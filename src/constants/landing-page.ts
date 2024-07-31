@@ -2,7 +2,8 @@
 // constants 
 export const pricingCards = [
   {
-    title: 'Free',
+    // TODO: change standard to free
+    title: 'Standard',
     description: 'Perfect for trying out Dives AI',
     price: 'Ghc.0',
     duration: '',

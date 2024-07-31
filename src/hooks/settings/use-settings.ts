@@ -1,37 +1,39 @@
 import {
-  // onChatBotImageUpdate,
+  onUpdateDomain,
+  onChatBotImageUpdate,
   // onCreateFilterQuestions,
   // onCreateHelpDeskQuestion,
   // onCreateNewDomainProduct,
-  // onDeleteUserDomain,
+  onDeleteUserDomain,
   // onGetAllFilterQuestions,
-  // onGetAllHelpDeskQuestions,
-  // onUpdateDomain,
+  // onGetAllHelpDeskQuestions, 
   onUpdatePassword,
-  // onUpdateWelcomeMessage,
+  onUpdateWelcomeMessage,
 } from '@/actions/settings'
 import { useToast } from '@/components/ui/use-toast'
 import {
   ChangePasswordProps,
   ChangePasswordSchema,
 } from '@/schemas/auth.schema'
-import {
-  AddProductProps,
-  AddProductSchema,
-  DomainSettingsProps,
-  DomainSettingsSchema,
-  FilterQuestionsProps,
-  FilterQuestionsSchema,
-  HelpDeskQuestionsProps,
-  HelpDeskQuestionsSchema,
-} from '@/schemas/settings.schema'
+import { DomainSettingsProps, DomainSettingsSchema } from '@/schemas/settings.schema'
+// import {
+//   AddProductProps,
+//   AddProductSchema,
+//   DomainSettingsProps,
+//   DomainSettingsSchema,
+//   FilterQuestionsProps,
+//   FilterQuestionsSchema,
+//   HelpDeskQuestionsProps,
+//   HelpDeskQuestionsSchema,
+// } from '@/schemas/settings.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { UploadClient } from '@uploadcare/upload-client'
 import { useTheme } from 'next-themes'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react' 
 import { useForm } from 'react-hook-form'
 
+// init upload client for image upload
 const upload = new UploadClient({
   publicKey: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY as string,
 })
@@ -44,6 +46,7 @@ export const useThemeMode = () => {
   }
 }
 
+// a functions to allow users change passwords
 export const useChangePassword = () => {
   const {
     register,
@@ -57,11 +60,13 @@ export const useChangePassword = () => {
   const { toast } = useToast()
   const [loading, setLoading] = useState<boolean>(false)
 
+
   const onChangePassword = handleSubmit(async (values) => {
     try {
       setLoading(true)
       const updated = await onUpdatePassword(values.password)
       if (updated) {
+        // reset the form if the password has been updated successfully
         reset()
         setLoading(false)
         toast({ title: 'Success', description: updated.message })
@@ -78,77 +83,89 @@ export const useChangePassword = () => {
   }
 }
 
-// export const useSettings = (id: string) => {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//     reset,
-//   } = useForm<DomainSettingsProps>({
-//     resolver: zodResolver(DomainSettingsSchema),
-//   })
-//   const router = useRouter()
-//   const { toast } = useToast()
-//   const [loading, setLoading] = useState<boolean>(false)
-//   const [deleting, setDeleting] = useState<boolean>(false)
 
-//   const onUpdateSettings = handleSubmit(async (values) => {
-//     setLoading(true)
-//     if (values.domain) {
-//       const domain = await onUpdateDomain(id, values.domain)
-//       if (domain) {
-//         toast({
-//           title: 'Success',
-//           description: domain.message,
-//         })
-//       }
-//     }
-//     if (values.image[0]) {
-//       const uploaded = await upload.uploadFile(values.image[0])
-//       const image = await onChatBotImageUpdate(id, uploaded.uuid)
-//       if (image) {
-//         toast({
-//           title: image.status == 200 ? 'Success' : 'Error',
-//           description: image.message,
-//         })
-//         setLoading(false)
-//       }
-//     }
-//     if (values.welcomeMessage) {
-//       const message = await onUpdateWelcomeMessage(values.welcomeMessage, id)
-//       if (message) {
-//         toast({
-//           title: 'Success',
-//           description: message.message,
-//         })
-//       }
-//     }
-//     reset()
-//     router.refresh()
-//     setLoading(false)
-//   })
+// functions for domain settings 
+export const useSettings = (id: string) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<DomainSettingsProps>({
+    resolver: zodResolver(DomainSettingsSchema),
+  })
+  const router = useRouter()
+  const { toast } = useToast()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [deleting, setDeleting] = useState<boolean>(false)
+  
+  const onUpdateSettings = handleSubmit(async (values) => {
+    setLoading(true);
+    if (values.domain) {
+      const domain = await onUpdateDomain(id, values.domain)
+      if (domain) {
+        toast({
+          title: 'Success',
+          description: domain.message,
+        })
+      }
+    }
+    if (values.image[0]) {
+      const uploaded = await upload.uploadFile(values.image[0])
+      const image = await onChatBotImageUpdate(id, uploaded.uuid)
 
-//   const onDeleteDomain = async () => {
-//     setDeleting(true)
-//     const deleted = await onDeleteUserDomain(id)
-//     if (deleted) {
-//       toast({
-//         title: 'Success',
-//         description: deleted.message,
-//       })
-//       setDeleting(false)
-//       router.refresh()
-//     }
-//   }
-//   return {
-//     register,
-//     onUpdateSettings,
-//     errors,
-//     loading,
-//     onDeleteDomain,
-//     deleting,
-//   }
-// }
+      if (image) {
+        toast({
+          title: image.status == 200 ? 'Image updated successfully' : 'Error',
+          description: image.message,
+        })
+        setLoading(false)
+      }
+    }
+
+    if (values.welcomeMessage) {
+      const message = await onUpdateWelcomeMessage(id, values.welcomeMessage)
+      
+      if (message) {
+        toast({
+          title: 'Welcome message updated successfully',
+          description: message.message,
+        })
+      }
+    }
+    reset()
+    router.refresh()
+    setLoading(false)
+  })
+
+  // functions for wen users delete tier domain
+  const onDeleteDomain = async () => {
+    setDeleting(true)
+    const deleted = await onDeleteUserDomain(id)
+    if (deleted) {
+      toast({
+        title: 'Success',
+        description: deleted.message,
+      })
+      setDeleting(false)
+      router.refresh()
+    }
+  }
+  return {
+    register,
+    onUpdateSettings,
+    loading,
+    errors,
+    onDeleteDomain,
+    deleting,
+  }
+
+
+}
+
+
+
+
 
 // export const useHelpDesk = (id: string) => {
 //   const {

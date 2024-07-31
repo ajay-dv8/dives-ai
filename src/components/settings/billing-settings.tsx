@@ -1,24 +1,23 @@
 
-//import { onGetSubscriptionPlan } from '@/actions/settings'  
-//import { Card, CardContent, CardDescription } from '../ui/card'
-// import { Check, CheckCircle2, Plus } from 'lucide-react'
-// import { pricingCards } from '@/constants/landing-page'
+import { Check, CheckCircle2, Plus } from 'lucide-react'
+import { pricingCards } from '@/constants/landing-page'
 //import Modal from '../modal'
 // import SubscriptionForm from '../forms/settings/subscription-form'
 import Image from 'next/image' 
 import { onGetSubscriptionPlan } from '@/actions/settings';
 import { SectionLabel } from '../section-label';
 import { Card, CardContent, CardDescription } from '../ui/card';
-import { Plus } from 'lucide-react';
 
 const BillingSettings = async () => {
-  const plan = await onGetSubscriptionPlan()
-  // const planFeatures = pricingCards.find(
-  //   (card) => card.title.toUpperCase() === plan?.toUpperCase()
-  // )?.features
-  // if (!planFeatures) return
+  const plan = await onGetSubscriptionPlan() 
 
+  // get the features of the users current plan 
+  const planFeatures = pricingCards.find(
+    (card) => card.title.toUpperCase() === plan?.toUpperCase()
+  )?.features
   // console.log(planFeatures)
+  if (!planFeatures) return
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
       <div className="lg:col-span-1">
@@ -56,10 +55,11 @@ const BillingSettings = async () => {
           <SubscriptionForm plan={plan!} />
         </Modal> */}
       </div>
+      {/* show users current plan and features */}
       <div className="lg:col-span-2">
         <h3 className="text-xl font-semibold mb-2">Current Plan</h3>
         <p className="text-sm font-semibold">{plan}</p>
-        {/* <div className="flex gap-2 flex-col mt-2">
+        <div className="flex gap-2 flex-col mt-2">
           {planFeatures.map((feature) => (
             <div
               key={feature}
@@ -69,7 +69,7 @@ const BillingSettings = async () => {
               <p className="text-muted-foreground">{feature}</p>
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   )
