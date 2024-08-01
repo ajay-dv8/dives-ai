@@ -1,8 +1,6 @@
-'use client'
-import Section from '@/components/section-label'
+import { SectionLabel } from '@/components/section-label'
 import { useToast } from '@/components/ui/use-toast'
-import { Copy } from 'lucide-react'
-import React from 'react'
+import { Copy } from 'lucide-react' 
 
 type Props = {
   id: string
@@ -43,7 +41,7 @@ const CodeSnippet = ({ id }: Props) => {
 
   return (
     <div className="mt-10 flex flex-col gap-5 items-start">
-      <Section
+      <SectionLabel
         label="Code snippet"
         message="Copy and paste this code snippet into the header tag of your website"
       />

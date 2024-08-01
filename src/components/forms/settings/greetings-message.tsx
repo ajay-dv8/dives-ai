@@ -1,7 +1,6 @@
-import Section from '@/components/section-label'
-import React from 'react'
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 import FormGenerator from '../form-generator'
+import { SectionLabel } from '@/components/section-label'
 
 type GreetingMessageProps = {
   message: string
@@ -9,6 +8,7 @@ type GreetingMessageProps = {
   errors: FieldErrors<FieldValues>
 }
 
+// components to setup chatbot greeting message
 const GreetingsMessage = ({
   message,
   register,
@@ -16,10 +16,12 @@ const GreetingsMessage = ({
 }: GreetingMessageProps) => {
   return (
     <div className="flex flex-col gap-2">
-      <Section
-        label="Greeting message"
+
+      <SectionLabel
+        label="Greeting message" 
         message="Customize your welcome message"
       />
+
       <div className="lg:w-[500px]">
         <FormGenerator
           placeholder={message}

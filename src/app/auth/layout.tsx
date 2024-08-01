@@ -48,7 +48,7 @@ const Layout = async ({ children }: Props) => {
           something never done before 😉
         </p>
 
-        <Image
+        {/* <Image
           src="/images/app-ui.png"
           alt="app image"
           loading="lazy"
@@ -56,7 +56,7 @@ const Layout = async ({ children }: Props) => {
           className="shrink-0 !w-[1600px]"
           width={0}
           height={0}
-        />
+        /> */}
       </div>
 
     </div>

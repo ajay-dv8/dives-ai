@@ -28,13 +28,13 @@ export default function Home() {
               Start For Free
             </Button>
 
-            <Image
+            {/* <Image
               src="/images/iphonecorinna.png"
               width={400}
               height={100}
-              alt="Logo"
+              alt="lpimg"
               className="max-w-lg object-contain"
-            /> 
+            />  */}
           </div> 
         </div>
       </section>

@@ -1,7 +1,6 @@
 import { onLoginUser } from '@/actions/auth'
 import SideBar from '@/components/sidebar'
-import { ChatProvider } from '@/context/user-chat-context'
-import React from 'react'
+import { ChatProvider } from '@/context/user-chat-context' 
 
 interface LayoutProps {
   children: React.ReactNode
@@ -16,7 +15,7 @@ const AdminLayout = async ({ children }: LayoutProps) => {
 
   return (
     <ChatProvider>  
-      <div className="flex w-full h-screen">
+      <div className="flex w-full h-screen"> 
         <SideBar domains={authenticated.domain}/>
         <div className="w-full h-screen flex flex-col py-3 pr-10 md:px-10">
           {children}

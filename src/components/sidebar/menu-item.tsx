@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link' 
 
 type MenuItemProps = {
   size: 'max' | 'min'

@@ -10,7 +10,9 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Loader } from '@/components/loader' 
 
-const WelcomeMessage = dynamic(
+// used dynamic import for welcome message
+// component will be called/rendered only when needed
+const WelcomeMessage = dynamic (
   () => import('./greetings-message').then((props) => props.default),
   {
     ssr: false,
@@ -30,29 +32,33 @@ type Props = {
 }
 
 const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
-  // const {
-  //   register,
-  //   onUpdateSettings,
-  //   errors,
-  //   onDeleteDomain,
-  //   deleting,
-  //   loading,
-  // } = useSettings(id)
+  const {
+    register,
+    onUpdateSettings,
+    errors,
+    onDeleteDomain,
+    deleting,
+    loading,
+  } = useSettings(id)
   return (
     <form
       className="flex flex-col gap-8 pb-10"
-      //onSubmit={onUpdateSettings}
+      onSubmit={onUpdateSettings}
     >
-      {/* <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         <h2 className="font-bold text-2xl">Domain Settings</h2>
         <Separator orientation="horizontal" />
+
         <DomainUpdate
           name={name}
           register={register}
           errors={errors}
         />
-        <CodeSnippet id={id} />
+        {/* TODO: fix and minimize code snippet */}
+        {/* code snippet to integrate AI bot */}
+        {/* <CodeSnippet id={id} /> */}
       </div>
+
       <div className="flex flex-col gap-3 mt-5">
         <div className="flex gap-4 items-center">
           <h2 className="font-bold text-2xl">Chatbot Settings</h2>
@@ -61,7 +67,9 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
             Premium
           </div>
         </div>
+
         <Separator orientation="horizontal" />
+
         <div className="grid md:grid-cols-2">
           <div className="col-span-1 flex flex-col gap-5 order-last md:order-first">
             <EditChatbotIcon
@@ -75,7 +83,8 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
               errors={errors}
             />
           </div>
-          <div className="col-span-1 relative ">
+          
+          {/* <div className="col-span-1 relative ">
             <Image
               src="/images/bot-ui.png"
               className="sticky top-0"
@@ -83,9 +92,10 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
               width={530}
               height={769}
             />
-          </div>
+          </div> */}
         </div>
       </div>
+
       <div className="flex gap-5 justify-end">
         <Button
           //onClick={onDeleteDomain}
@@ -101,9 +111,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
         >
           <Loader loading={loading}>Save</Loader>
         </Button>
-      </div> */}
-
-      settings form
+      </div> 
     </form>
   )
 }
