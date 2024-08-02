@@ -11,7 +11,7 @@ type MenuItemProps = {
 }
 
 const MenuItem = ({ size, path, icon, label, current, onSignOut }: MenuItemProps) => {
-  // switch case checks if size is max or min and show sidebar accordingly
+  // switch case to check if size is max or min and show sidebar accordingly
   switch (size) {
     case 'max':
       return (
