@@ -379,3 +379,75 @@ export const onDeleteUserDomain = async (id: string) => {
     console.log(error)
   }
 }
+
+// a funtion to handle when user is creating helpdesk questions  
+export const onCreateHelpDeskQuestion = async (
+  id: string,
+  question: string,
+  answer: string
+) => {
+  try {
+    // add and get all questions
+    const helpDeskQuestion = await client.domain.update({
+      where: {
+        id,
+      },
+      data: {
+        helpdesk: {
+          create: {
+            question,
+            answer,
+          },
+        },
+      },
+      include: {
+        helpdesk: {
+          select: {
+            id: true,
+            question: true,
+            answer: true,
+          },
+        },
+      },
+    })
+
+    if (helpDeskQuestion) {
+      return {
+        status: 200,
+        message: 'New help desk question added',
+        questions: helpDeskQuestion.helpdesk,
+      }
+    }
+
+    return {
+      status: 400,
+      message: 'Oops! something went wrong',
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// get all help desk questions from db
+export const onGetAllHelpDeskQuestions = async (id: string) => {
+  try {
+    const questions = await client.helpDesk.findMany({
+      where: {
+        domainId: id,
+      },
+      select: {
+        question: true,
+        answer: true,
+        id: true,
+      },
+    })
+
+    return {
+      status: 200,
+      message: 'Added new help desk question',
+      questions: questions,
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
