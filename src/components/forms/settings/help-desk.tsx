@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+
 import { useHelpDesk } from '@/hooks/settings/use-settings'
 import {
   Card,
@@ -10,7 +10,7 @@ import {
 import FormGenerator from '../form-generator'
 import { Button } from '@/components/ui/button'
 import { Loader } from '@/components/loader'
-// import Accordion from '@/components/accordion'
+import { Accordion } from '@/components/accordion'
 import { SectionLabel } from '@/components/section-label'
 
 interface helpDeskProp {
@@ -73,7 +73,7 @@ const HelpDesk = ({ id }: helpDeskProp) => {
         </form>
       </CardContent>
 
-      {/* <CardContent className="p-6 overflow-y-auto chat-window">
+      <CardContent className="p-6 overflow-y-auto chat-window">
         <Loader loading={loading}>
           {isQuestions.length ? (
             isQuestions.map((question) => (
@@ -87,7 +87,7 @@ const HelpDesk = ({ id }: helpDeskProp) => {
             <CardDescription>No Questions</CardDescription>
           )}
         </Loader>
-      </CardContent> */}
+      </CardContent>
     </Card>
   )
 }
