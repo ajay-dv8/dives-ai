@@ -95,13 +95,14 @@ export const DomainSettingsSchema = z
 
 // Schema to validate help desk questions
 export const HelpDeskQuestionsSchema = z.object({
-  question: z.string().min(1, { message: 'Question cannot be left empty' }), 
+  question: z.string().min(1, { message: 'Please ask a question' }), 
   answer: z.string().min(1, { message: 'Answer cannot be left empty' }), 
 })
 
 // Schema to validate filtering questions
+// filter questions are questions to be fed to ai api 
 export const FilterQuestionsSchema = z.object({
-  question: z.string().min(1, { message: 'Question cannot be left empty' }), 
+  question: z.string().min(1, { message: 'Please ask a question' }), 
 })
 
 // Schema to validate adding a product

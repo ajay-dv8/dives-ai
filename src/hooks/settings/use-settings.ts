@@ -1,11 +1,11 @@
 import {
   onUpdateDomain,
   onChatBotImageUpdate,
-  // onCreateFilterQuestions,
+  onCreateFilterQuestions,
   onCreateHelpDeskQuestion,
   // onCreateNewDomainProduct,
   onDeleteUserDomain,
-  // onGetAllFilterQuestions,
+  onGetAllFilterQuestions,
   onGetAllHelpDeskQuestions, 
   onUpdatePassword,
   onUpdateWelcomeMessage,
@@ -20,8 +20,8 @@ import {
   // AddProductSchema,
   DomainSettingsProps,
   DomainSettingsSchema,
-  // FilterQuestionsProps,
-  // FilterQuestionsSchema,
+  FilterQuestionsProps,
+  FilterQuestionsSchema,
   HelpDeskQuestionsProps,
   HelpDeskQuestionsSchema,
 } from '@/schemas/settings.schema'
@@ -224,56 +224,64 @@ export const useHelpDesk = (id: string) => {
   }
 }
 
-// export const useFilterQuestions = (id: string) => {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//     reset,
-//   } = useForm<FilterQuestionsProps>({
-//     resolver: zodResolver(FilterQuestionsSchema),
-//   })
-//   const { toast } = useToast()
-//   const [loading, setLoading] = useState<boolean>(false)
-//   const [isQuestions, setIsQuestions] = useState<
-//     { id: string; question: string }[]
-//   >([])
+// for creating filtered questions by organization
+// id to identify the chatbot the questions are for 
+export const useFilterQuestions = (id: string) => {
+  // get use form hooks
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FilterQuestionsProps>({
+    resolver: zodResolver(FilterQuestionsSchema),
+  })
+  const { toast } = useToast()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [isQuestions, setIsQuestions] = useState<
+    { id: string; question: string }[]
+  >([])
 
-//   const onAddFilterQuestions = handleSubmit(async (values) => {
-//     setLoading(true)
-//     const questions = await onCreateFilterQuestions(id, values.question)
-//     if (questions) {
-//       setIsQuestions(questions.questions!)
-//       toast({
-//         title: questions.status == 200 ? 'Success' : 'Error',
-//         description: questions.message,
-//       })
-//       reset()
-//       setLoading(false)
-//     }
-//   })
+  // a function to handle when a user submist a question
+  const onAddFilterQuestions = handleSubmit(async (values) => {
+    setLoading(true)
+    // questios to be passed to ai api
+    const questions = await onCreateFilterQuestions(id, values.question)
+    
+    // if questions are created successfully
+    if (questions) {
+      setIsQuestions(questions.questions!)
+      toast({
+        title: questions.status == 200 ? 'Success' : 'Error',
+        description: questions.message,
+      })
+      reset()
+      setLoading(false)
+    }
+  })
 
-//   const onGetQuestions = async () => {
-//     setLoading(true)
-//     const questions = await onGetAllFilterQuestions(id)
-//     if (questions) {
-//       setIsQuestions(questions.questions)
-//       setLoading(false)
-//     }
-//   }
+  // get all questions
+  const onGetQuestions = async () => {
+    setLoading(true)
+    const questions = await onGetAllFilterQuestions(id)
+    if (questions) {
+      setIsQuestions(questions.questions)
+      setLoading(false)
+    }
+  }
 
-//   useEffect(() => {
-//     onGetQuestions()
-//   }, [])
+  useEffect(() => {
+    onGetQuestions()
+  }, [])
 
-//   return {
-//     loading,
-//     onAddFilterQuestions,
-//     register,
-//     errors,
-//     isQuestions,
-//   }
-// }
+  return {
+    loading,
+    onAddFilterQuestions,
+    register,
+    errors,
+    isQuestions,
+  }
+}
 
 // export const useProducts = (domainId: string) => {
 //   const { toast } = useToast()

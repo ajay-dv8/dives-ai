@@ -1,5 +1,5 @@
 'use client'
-import Section from '@/components/section-label'
+import { SectionLabel } from '@/components/section-label'
 import {
   Card,
   CardContent,
@@ -29,7 +29,7 @@ const FilterQuestions = ({ id }: Props) => {
           className="flex flex-col gap-6 mt-10"
         >
           <div className="flex flex-col gap-3">
-            <Section
+            <SectionLabel
               label="Question"
               message="Add a question that you want your chatbot to ask"
             />
@@ -44,9 +44,9 @@ const FilterQuestions = ({ id }: Props) => {
             />
           </div>
           <div className="flex flex-col gap-3">
-            <Section
+            <SectionLabel
               label="Answer to question"
-              message="The anwer for the question above"
+              message="The answer for the question above"
             />
             <FormGenerator
               inputType="textarea"

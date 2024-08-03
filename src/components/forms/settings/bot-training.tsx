@@ -27,13 +27,13 @@ const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
           value="help desk"
           className="w-full"
         >
-          {/* TODO: fix issues wid id  */}
+          {/* TODO: fix issues wid id --FIXED */}
           <HelpDesk id={id} />
         </TabsContent>
         <TabsContent value="questions">
           {/* TODO: fix issues wid id */}
           {/* ask users specific questions */}
-          {/* <FilterQuestions id={id} /> */}
+          <FilterQuestions id={id} />
         </TabsContent>
       </TabsMenu>
     </div>
