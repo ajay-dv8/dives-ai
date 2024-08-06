@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs"
 
-
 interface TabsMenuProps { 
   triggers: {
     label: string
