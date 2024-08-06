@@ -27,8 +27,8 @@ const DomainSettingsPage = async ({ params }: DomainSettingsProps) => {
           plan={domain.subscription?.plan} 
           chatBot={domain.domains[0].chatBot}
         />
-
-        <BotTrainingForm />
+        {/* id issues fixed  */}
+        <BotTrainingForm id={domain.domains[0].id}/>
       </div>
     </div>
   )

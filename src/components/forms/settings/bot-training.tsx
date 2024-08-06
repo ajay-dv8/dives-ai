@@ -1,6 +1,5 @@
 
-import { HELP_DESK_TABS_MENU } from '@/constants/menu'
-import React from 'react'
+import { HELP_DESK_TABS_MENU } from '@/constants/menu' 
 import HelpDesk from './help-desk'
 import FilterQuestions from './filter-questions'
 import { TabsMenu } from '@/components/tabs'
