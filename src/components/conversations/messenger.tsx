@@ -1,15 +1,13 @@
 'use client'
-import { useChatWindow } from '@/hooks/conversation/use-conversation'
-import React from 'react'
+import { useChatWindow } from '@/hooks/use-conversation'
 import { Loader } from '../loader'
-import Bubble from '../chatbot/bubble'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { PaperclipIcon } from 'lucide-react'
+import Bubble from '../chatbot/bubble'
 
-type Props = {}
 
-const Messenger = (props: Props) => {
+const Messenger = () => {
   const {
     messageWindowRef,
     chats,
@@ -17,14 +15,14 @@ const Messenger = (props: Props) => {
     chatRoom,
     onHandleSentMessage,
     register,
-  } = useChatWindow()
+  } = useChatWindow();
   return (
-    <div className="flex-1 flex flex-col h-0 relative">
-      <div className="flex-1 h-0 w-full flex flex-col">
+    <div className="flex-1 flex flex-col relative">
+      <div className="flex-1 w-full flex flex-col">
         <Loader loading={loading}>
           <div
             ref={messageWindowRef}
-            className="w-full flex-1 h-0 flex flex-col gap-3 pl-5 py-5 chat-window overflow-y-auto"
+            className="w-full flex-1 flex flex-col gap-3 pl-5 py-5 chat-window overflow-y-auto"
           >
             {chats.length ? (
               chats.map((chat) => (
@@ -43,6 +41,8 @@ const Messenger = (props: Props) => {
           </div>
         </Loader>
       </div>
+
+      {/* send message form */}
       <form
         onSubmit={onHandleSentMessage}
         className="flex px-3 pt-3 pb-10 flex-col backdrop-blur-sm bg-muted w-full"
@@ -61,6 +61,7 @@ const Messenger = (props: Props) => {
             Send
           </Button>
         </div>
+
         <span>
           <PaperclipIcon className='text-muted-foreground' />
         </span>

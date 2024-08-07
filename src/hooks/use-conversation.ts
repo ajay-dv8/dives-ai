@@ -1,10 +1,11 @@
 'use client'
-import { onGetChatMessages, onGetDomainChatRooms, onViewUnReadMessages } from "@/actions/conversation"
+import { onGetChatMessages, onGetDomainChatRooms, onOwnerSendMessage, onRealTimeChat, onViewUnReadMessages } from "@/actions/conversation"
 import { getMonthName } from "@/constants/timeslots"
 import { useChatContext } from "@/context/user-chat-context"
-import { ConversationSearchSchema } from "@/schemas/conversation.schema"
+import { pusherClient } from "@/lib/utils"
+import { ChatBotMessageSchema, ConversationSearchSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 
 export const useConversation = () => {
@@ -116,74 +117,85 @@ export const useChatTime = (createdAt: Date, roomId: string) => {
     onSetMessageRecievedDate()
   }, [])
 
-  return { messageSentAt, urgent, onSeenChat }
+  return { messageSentAt, urgent, onSeenChat } 
 }
 
+// 
+export const useChatWindow = () => {
+  const { chats, loading, setChats, chatRoom } = useChatContext()
+  const messageWindowRef = useRef<HTMLDivElement | null>(null)
+  const { register, handleSubmit, reset } = useForm({
+    resolver: zodResolver(ChatBotMessageSchema),
+    mode: 'onChange',
+  })
 
-// export const useChatWindow = () => {
-//   const { chats, loading, setChats, chatRoom } = useChatContext()
-//   const messageWindowRef = useRef<HTMLDivElement | null>(null)
-//   const { register, handleSubmit, reset } = useForm({
-//     resolver: zodResolver(ChatBotMessageSchema),
-//     mode: 'onChange',
-//   })
-//   const onScrollToBottom = () => {
-//     messageWindowRef.current?.scroll({
-//       top: messageWindowRef.current.scrollHeight,
-//       left: 0,
-//       behavior: 'smooth',
-//     })
-//   }
+  const onScrollToBottom = () => {
+    messageWindowRef.current?.scroll({
+      top: messageWindowRef.current.scrollHeight,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+  
+  // scroll to bottom on component mount
+  useEffect(() => {
+    onScrollToBottom()
+  }, [chats, messageWindowRef])
 
-//   useEffect(() => {
-//     onScrollToBottom()
-//   }, [chats, messageWindowRef])
+  /* Pusher is a library for bulding a 2way connection
+   * realtime sockets to enable realtime mode
+  */
+    // TODO: setup pusher 
+  // useEffect(() => {
+  //   // when a new message is received in the chat room, pusherClient will trigger this function
+  //   if (chatRoom) {
+  //     // if theres a chat room use pusherClient for that chat room 
+  //     pusherClient.subscribe(chatRoom)
+  //     // bind the 'realtime-mode' event to the chat room and get chat data.
+  //     pusherClient.bind('realtime-mode', (data: any) => {
+  //       // 
+  //       setChats((prev) => [...prev, data.chat])
+  //     })
 
-//   useEffect(() => {
-//     if (chatRoom) {
-//       pusherClient.subscribe(chatRoom)
-//       pusherClient.bind('realtime-mode', (data: any) => {
-//         setChats((prev) => [...prev, data.chat])
-//       })
+  //     // unsubscribe from the chat room when the component is unmounted
+  //     return () => {
+  //       pusherClient.unbind('realtime-mode')
+  //       pusherClient.unsubscribe(chatRoom)
+  //     }
+  //   }
+  // }, [chatRoom])
 
-//       return () => {
-//         pusherClient.unbind('realtime-mode')
-//         pusherClient.unsubscribe(chatRoom)
-//       }
-//     }
-//   }, [chatRoom])
+  const onHandleSentMessage = handleSubmit(async (values) => {
+    try {
+      reset()
+      const message = await onOwnerSendMessage(
+        chatRoom!,
+        values.content,
+        'assistant'
+      )
+      //WIP: Remove this line
+      if (message) {
+        //remove this
+        setChats((prev) => [...prev, message.message[0]])
+          // TODO: uncomment to test real time
+        // await onRealTimeChat(
+        //   chatRoom!,
+        //   message.message[0].message,
+        //   message.message[0].id,
+        //   'assistant'
+        // )
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  })
 
-//   const onHandleSentMessage = handleSubmit(async (values) => {
-//     try {
-//       reset()
-//       const message = await onOwnerSendMessage(
-//         chatRoom!,
-//         values.content,
-//         'assistant'
-//       )
-//       //WIP: Remove this line
-//       if (message) {
-//         //remove this
-//         // setChats((prev) => [...prev, message.message[0]])
-
-//         await onRealTimeChat(
-//           chatRoom!,
-//           message.message[0].message,
-//           message.message[0].id,
-//           'assistant'
-//         )
-//       }
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   })
-
-//   return {
-//     messageWindowRef,
-//     register,
-//     onHandleSentMessage,
-//     chats,
-//     loading,
-//     chatRoom,
-//   }
-// }
+  return {
+    messageWindowRef,
+    register,
+    onHandleSentMessage,
+    chats,
+    loading,
+    chatRoom,
+  }
+}

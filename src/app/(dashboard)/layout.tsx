@@ -17,7 +17,7 @@ const AdminLayout = async ({ children }: LayoutProps) => {
     <ChatProvider>  
       <div className="flex w-full h-screen"> 
         <SideBar domains={authenticated.domain}/>
-        <div className="w-full h-screen flex flex-col py-3 pr-10 md:px-10">
+        <div className="w-full h-screen flex flex-col py-3 pl-20 md:pl-4">
           {children}
         </div>
       </div>

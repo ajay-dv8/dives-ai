@@ -5,7 +5,7 @@ import { User } from 'lucide-react'
 import { UrgentIcon } from '@/icons/urgent-icon'
 import { useChatTime } from '@/hooks/use-conversation'
 
-type ChatCardProps = {
+interface ChatCardProps {
   title: string
   description?: string
   createdAt: Date

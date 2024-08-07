@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-// import PusherClient from 'pusher-js'
-// import PusherServer from 'pusher'
+import PusherClient from 'pusher-js'
+import PusherServer from 'pusher'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -13,6 +13,9 @@ export const extractUUIDFromString = (url: string) => {
   )
 }
 
+// TODO: uncomment pusher client n comment mock client
+
+  export const pusherServer = {}
 // export const pusherServer = new PusherServer({
 //   appId: process.env.NEXT_PUBLIC_PUSHER_APP_ID as string,
 //   key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string,
@@ -21,6 +24,7 @@ export const extractUUIDFromString = (url: string) => {
 //   useTLS: true,
 // })
 
+  export const pusherClient = {}
 // export const pusherClient = new PusherClient(
 //   process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string,
 //   {
