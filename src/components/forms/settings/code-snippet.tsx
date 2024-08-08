@@ -17,14 +17,14 @@ const CodeSnippet = ({ id }: Props) => {
     document.head.append(style);
     }
     
-    iframeStyles('
+    iframeStyles(\`
         .chat-frame {
             position: fixed;
             bottom: 50px;
             right: 50px;
             border: none;
         }
-    ')
+    \`)
     
     iframe.src = "http://localhost:3000/chatbot"
     iframe.classList.add('chat-frame')
@@ -37,13 +37,13 @@ const CodeSnippet = ({ id }: Props) => {
         iframe.height = dimensions.height
         iframe.contentWindow.postMessage("${id}", "http://localhost:3000/")
     })
-        `
+  `
 
   return (
     <div className="mt-10 flex flex-col gap-5 items-start">
       <SectionLabel
         label="Code snippet"
-        message="Copy and paste this code snippet into the header tag of your website"
+        message="Copy and paste this code snippet into the script tag of your website"
       />
       <div className="bg-cream px-10 rounded-lg inline-block relative">
         <Copy

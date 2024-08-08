@@ -1,14 +1,12 @@
 // 'use client'
-// import { useChatBot } from '@/hooks/chatbot/use-chatbot'
-// import React from 'react'
+// import { useChatBot } from '@/hooks/chatbot/use-chatbot' 
 // import { BotWindow } from './window'
 // import { cn } from '@/lib/utils'
 // import Image from 'next/image'
 // import { BotIcon } from '@/icons/bot-icon'
 
-// type Props = {}
 
-// const AiChatBot = (props: Props) => {
+const AiChatBot = () => {
 //   const {
 //     onOpenChatBot,
 //     botOpened,
@@ -24,8 +22,10 @@
 //     errors,
 //   } = useChatBot()
 
-//   return (
+  return (
+    <div>Ai ChatBot naba oo</div>
 //     <div className="h-screen flex flex-col justify-end items-end gap-4">
+
 //       {botOpened && (
 //         <BotWindow
 //           errors={errors}
@@ -61,7 +61,7 @@
 //         )}
 //       </div>
 //     </div>
-//   )
-// }
+  )
+}
 
-// export default AiChatBot
+export default AiChatBot

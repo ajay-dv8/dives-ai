@@ -1,8 +1,7 @@
 'use server'
 
 import { client } from '@/lib/prisma'
-import { pusherServer } from '@/lib/utils'
-// import { pusherServer } from '@/lib/utils'
+import { pusherServer } from '@/lib/utils' 
 
 // Function to toggle realtime mode for a specific chat room
 export const onToggleRealtime = async (id: string, state: boolean) => {
@@ -156,6 +155,7 @@ export const onRealTimeChat = async (
   id: string,
   role: 'assistant' | 'user'
 ) => {
+  // TODO: setup realtime mode
   // Trigger a realtime event to update the chatroom with a new message 
   // pusherServer.trigger(chatroomId, 'realtime-mode', {
   //   chat: {

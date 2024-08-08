@@ -54,9 +54,9 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
           register={register}
           errors={errors}
         />
-        {/* TODO: fix and minimize code snippet */}
+        
         {/* code snippet to integrate AI bot */}
-        {/* <CodeSnippet id={id} /> */}
+        <CodeSnippet id={id} />
       </div>
 
       <div className="flex flex-col gap-3 mt-5">
