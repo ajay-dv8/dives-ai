@@ -1,4 +1,4 @@
-import { onGetCurrentChatBot } from '@/actions/bot'
+import { onAiChatBotAssistant, onGetCurrentChatBot } from '@/actions/bot'
 import { postToParent, pusherClient } from '@/lib/utils'
 import {
   ChatBotMessageProps,
@@ -127,25 +127,25 @@ export const useChatBot = () => {
 
       console.log('🟡 RESPONSE FROM UC', uploaded.uuid)
       setOnAiTyping(true)
-      // const response = await onAiChatBotAssistant(
-      //   currentBotId!,
-      //   onChats,
-      //   'user',
-      //   uploaded.uuid
-      // )
+      const response = await onAiChatBotAssistant(
+        currentBotId!,
+        onChats,
+        'user',
+        uploaded.uuid
+      )
 
-      // if (response) {
-      //   setOnAiTyping(false)
-      //   if (response.live) {
-      //     setOnRealTime((prev) => ({
-      //       ...prev,
-      //       chatroom: response.chatRoom,
-      //       mode: response.live,
-      //     }))
-      //   } else {
-      //     setOnChats((prev: any) => [...prev, response.response])
-      //   }
-      // }
+      if (response) {
+        setOnAiTyping(false)
+        if (response.live) {
+          setOnRealTime((prev) => ({
+            ...prev,
+            chatroom: response.chatRoom,
+            mode: response.live,
+          }))
+        } else {
+          setOnChats((prev: any) => [...prev, response.response])
+        }
+      }
     }
     reset()
 
@@ -159,28 +159,27 @@ export const useChatBot = () => {
           },
         ])
       }
-
       setOnAiTyping(true)
 
-      // const response = await onAiChatBotAssistant(
-      //   currentBotId!,
-      //   onChats,
-      //   'user',
-      //   values.content
-      // )
+      const response = await onAiChatBotAssistant(
+        currentBotId!,
+        onChats,
+        'user',
+        values.content
+      )
 
-      // if (response) {
-      //   setOnAiTyping(false)
-      //   if (response.live) {
-      //     setOnRealTime((prev) => ({
-      //       ...prev,
-      //       chatroom: response.chatRoom,
-      //       mode: response.live,
-      //     }))
-      //   } else {
-      //     setOnChats((prev: any) => [...prev, response.response])
-      //   }
-      // }
+      if (response) {
+        setOnAiTyping(false)
+        if (response.live) {
+          setOnRealTime((prev) => ({
+            ...prev,
+            chatroom: response.chatRoom,
+            mode: response.live,
+          }))
+        } else {
+          setOnChats((prev: any) => [...prev, response.response])
+        }
+      }
     }
   })
 
@@ -214,6 +213,7 @@ export const useRealTime = (
 ) => {
   const counterRef = useRef(1)
 
+  // TODO: setup pusher
   // useEffect(() => {
   //   pusherClient.subscribe(chatRoom)
   //   pusherClient.bind('realtime-mode', (data: any) => {
