@@ -41,5 +41,5 @@ export const extractURLfromString = (url: string) => {
 }
 
 export const extractEmailsFromString = (text: string) => {
-  return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi)
+  return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/)
 }

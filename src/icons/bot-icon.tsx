@@ -1,4 +1,3 @@
-import React from 'react'
 
 export const BotIcon = () => {
   return (
@@ -6,7 +5,7 @@ export const BotIcon = () => {
       width="47"
       height="47"
       viewBox="0 0 47 47"
-      fill="none"
+      fill="#25CAAC"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

@@ -142,7 +142,7 @@ export const useChatWindow = () => {
     onScrollToBottom()
   }, [chats, messageWindowRef])
 
-  /* Pusher is a library for bulding a 2way connection
+  /* Pusher is a library for building a 2way connection
    * realtime sockets to enable realtime mode
   */
     // TODO: setup pusher 
@@ -177,7 +177,7 @@ export const useChatWindow = () => {
       if (message) {
         //remove this
         setChats((prev) => [...prev, message.message[0]])
-          // TODO: uncomment to test real time
+        // TODO: uncomment to test real time
         // await onRealTimeChat(
         //   chatRoom!,
         //   message.message[0].message,
