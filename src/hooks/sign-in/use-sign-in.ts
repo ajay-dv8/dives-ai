@@ -29,7 +29,7 @@ export const useSignInForm = () => {
         if (authenticated.status === 'complete') {
           await setActive({ session: authenticated.createdSessionId })
           toast({
-            title: 'Success',
+            title: 'You are logged in',
             description: 'Welcome back!',
           })
           router.push('/dashboard')

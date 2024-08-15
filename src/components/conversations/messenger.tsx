@@ -3,7 +3,7 @@ import { useChatWindow } from '@/hooks/use-conversation'
 import { Loader } from '../loader'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
-import { PaperclipIcon } from 'lucide-react'
+import { PaperclipIcon, SendHorizonal } from 'lucide-react'
 import Bubble from '../chatbot/bubble'
 
 
@@ -47,24 +47,27 @@ const Messenger = () => {
         onSubmit={onHandleSentMessage}
         className="flex px-3 pt-3 pb-10 flex-col backdrop-blur-sm bg-muted w-full"
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center gap-x-3">
+          <span>
+            <PaperclipIcon className='text-muted-foreground hover:scale-105 transition-all duration-300 ease-in-out'/>
+          </span>
+
           <Input
             {...register('content')}
             placeholder="Type your message..."
             className="focus-visible:ring-0 flex-1 p-0 focus-visible:ring-offset-0 bg-muted rounded-none outline-none border-none"
           />
+
           <Button
+            variant='ghost'
             type="submit"
-            className="mt-3 px-7"
-            disabled={!chatRoom}
+            className="mt-3 p-2 rounded-full hover:scale-105 transition-all duration-300 ease-in-out"
+            // disabled={!chatRoom}
           >
-            Send
+            <SendHorizonal />
           </Button>
         </div>
 
-        <span>
-          <PaperclipIcon className='text-muted-foreground' />
-        </span>
       </form>
     </div>
   )

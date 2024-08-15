@@ -1,9 +1,8 @@
-import React from 'react'
-import { Spinner } from '../spinner'
-import { cn } from '@/lib/utils'
 
-// data types for loader
-type LoaderProps = {
+import { cn } from '@/lib/utils'
+import { Spinner } from './spinner'
+
+interface LoaderProps {
   loading: boolean
   children: React.ReactNode
   className?: string

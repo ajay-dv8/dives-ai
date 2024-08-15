@@ -1,5 +1,4 @@
 import OTPInput from '@/components/otp'
-import React from 'react'
 
 type Props = {
   setOTP: React.Dispatch<React.SetStateAction<string>>

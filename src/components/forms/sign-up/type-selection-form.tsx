@@ -1,15 +1,14 @@
-import React from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 import UserTypeCard from './user-type-card'
 
 // data types for type selection form
-type Props = {
+type TypeSelectionFormProps = {
   register: UseFormRegister<FieldValues>
   userType: 'owner' | 'student'
   setUserType: React.Dispatch<React.SetStateAction<'owner' | 'student'>>
 }
 
-const TypeSelectionForm = ({ register, setUserType, userType }: Props) => {
+const TypeSelectionForm = ({ register, setUserType, userType }: TypeSelectionFormProps) => {
   return (
     <>
       <h2 className="text-gravel md:text-4xl font-bold text-center">Create an account</h2>

@@ -1,9 +1,8 @@
 import { ChatBotMessageProps } from '@/schemas/conversation.schema'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import RealTimeMode from './real-time'
-import Image from 'next/image' 
+import RealTimeMode from './real-time' 
 import { BOT_TABS_MENU } from '@/constants/menu' 
 import { TabsContent } from '../ui/tabs'
 import { Separator } from '../ui/separator'
@@ -11,7 +10,7 @@ import Bubble from './bubble'
 import { Responding } from './responding'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
-import { Paperclip, Send } from 'lucide-react'
+import { Paperclip, Send, SendHorizonal } from 'lucide-react'
 import { Label } from '../ui/label'
 import { CardDescription, CardTitle } from '../ui/card' 
 import UploadButton from '../upload-button'
@@ -65,22 +64,22 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
       setChat,
       textColor,
       theme,
-      help,
+      // help,
     },
     ref
   ) => {
     console.log(errors)
     return (
-      <div className="h-[670px] w-[450px] flex flex-col bg-white rounded-xl mr-[80px] border-[1px] overflow-hidden">
+      <div className="h-[39.5rem] w-[25rem] flex flex-col bg-gray-300 rounded-xl mr-[1rem] border-green/70 border-[1px] overflow-hidden">
         <div className="flex justify-between px-4 pt-4">
           
           <div className="flex gap-2">
-            <Avatar className="w-20 h-20">
+            <Avatar className="size-20">
               <AvatarImage
                 src="https://github.com/shadcn.png"
                 alt="@shadcn"
               />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback>AI</AvatarFallback>
             </Avatar>
 
             <div className="flex items-start flex-col">
@@ -108,7 +107,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
         </div>
         <TabsMenu
           triggers={BOT_TABS_MENU}
-          className=" bg-transparent border-[1px] border-border m-2"
+          className=" bg-transparent border-[1px] border-green/70 m-2 p-0"
         >
           <TabsContent value="chat">
             <Separator orientation="horizontal" />
@@ -135,8 +134,8 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                 className="flex px-3 py-1 flex-col flex-1"
               >
                 <div className="flex items-center gap-x-3 justify-between">
-                <Label htmlFor="bot-image">
-                  <Paperclip />
+                <Label htmlFor="bot-image" className='rounded-full p-2 hover:bg-green/20'>
+                  <Paperclip className='text-muted-foreground hover:scale-105 transition-all duration-300 ease-in-out'/>
                   <Input
                     {...register('image')}
                     type="file"
@@ -148,14 +147,15 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                   <Input
                     {...register('content')}
                     placeholder="Type your message..."
-                    className="focus-visible:ring-0 flex-1 px-3 focus-visible:ring-offset-0 bg-green/20 rounded-none outline-none border-none"
+                    autoComplete='off'
+                    className="text-gray-700 focus-visible:ring-0 flex-1 px-3 focus-visible:ring-offset-0 bg-green/20 rounded-2xl outline-none border-none"
                   />
 
                   <Button 
                     type="submit"
-                    className="mt-3 p-2 rounded-full bg-green/60 flex hover:bg-green/80 transition-all duration-300"
+                    className="p-2 rounded-full bg-green/40 flex hover:bg-green/80 transition-all duration-300"
                   >
-                    <Send className=""/>
+                    <SendHorizonal className=""/>
                   </Button>
                 </div>
 
@@ -172,7 +172,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                   Browse from a list of questions people usually ask.
                 </CardDescription>
               </div>
-              <Separator orientation="horizontal" />
+              <Separator orientation="horizontal"/>
 
               {helpdesk.map((desk) => (
                 <Accordion

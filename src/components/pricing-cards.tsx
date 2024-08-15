@@ -1,5 +1,4 @@
 import { pricingCards } from '@/constants/landing-page'
-import React from 'react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { cn } from '@/lib/utils'
 import { Check } from 'lucide-react'
@@ -17,7 +16,7 @@ export const PricingCard = () => {
         >
 
           <CardHeader>
-            <CardTitle className="text-orange">{card.title}</CardTitle>
+            <CardTitle className="text-green">{card.title}</CardTitle>
             <CardDescription>
               {pricingCards.find((c) => c.title === card.title)?.description}
             </CardDescription>

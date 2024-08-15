@@ -1,4 +1,4 @@
-// type for 
+// type for reg
 type UserRegistrationProps = {
   id: string
   type: 'email' | 'text' | 'password'
