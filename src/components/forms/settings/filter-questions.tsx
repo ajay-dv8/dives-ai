@@ -45,7 +45,7 @@ const FilterQuestions = ({ id }: FilterQuestionsProps) => {
           </div>
 
           {/* can remove u think its not needed */}
-          <div className="flex flex-col gap-3">
+          {/* <div className="flex flex-col gap-3">
             <SectionLabel
               label="Answer to question"
               message="The answer for the question above"
@@ -60,7 +60,7 @@ const FilterQuestions = ({ id }: FilterQuestionsProps) => {
               type="text"
               lines={4}
             />
-          </div>
+          </div> */}
 
           <Button
             type="submit"

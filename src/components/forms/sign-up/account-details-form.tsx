@@ -1,7 +1,8 @@
 import { USER_REGISTRATION_FORM } from '@/constants/forms' 
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 import FormGenerator from '../form-generator'
-// 
+
+// props for AccountDetailsForm component
 type AccountDetailsFormProps = {
   register: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>

@@ -60,7 +60,9 @@ export const usePortal = (
 
         setLoading(false)
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
   })
 
   const onSelectedTimeSlot = (slot: string) => setSelectedSlot(slot)

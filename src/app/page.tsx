@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/navbar"; 
+import { PortalBanner } from "@/components/portal-banner";
 import { PricingCard } from "@/components/pricing-cards";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -48,6 +49,8 @@ export default function Home() {
 
         <PricingCard />
       </section>
+
+      <PortalBanner/>
 
 
       {/* Feature blog post component here */}

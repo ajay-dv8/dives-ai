@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 import QuestionsForm from './questions'
 import BookAppointmentDate from './booking-date'
@@ -56,6 +56,7 @@ const PortalSteps = ({
   amount,
   stripeId,
 }: Props) => {
+  // if (questions.find((question) => !!question.answered))
   if (step == 1) {
     return (
       <QuestionsForm
@@ -82,18 +83,18 @@ const PortalSteps = ({
     )
   }
 
-
-  if (step == 2 && type == 'Payment') {
-    return (
-      <PaymentCheckout
-        products={products}
-        stripeId={stripeId}
-        onBack={onBack}
-        onNext={onNext}
-        amount={amount}
-      />
-    )
-  }
+// TODO: setup strip for payment
+  // if (step == 2 && type == 'Payment') {
+  //   return (
+  //     <PaymentCheckout
+  //       products={products}
+  //       stripeId={stripeId}
+  //       onBack={onBack}
+  //       onNext={onNext}
+  //       amount={amount}
+  //     />
+  //   )
+  // }
 
   return (
     <div className="flex flex-col items-center gap-3">

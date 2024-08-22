@@ -21,6 +21,7 @@ const QuestionsForm = ({ questions, register, error, onNext }: Props) => {
       <div className="flex justify-center">
         <h2 className="text-4xl font-bold mb-5">Details</h2>
       </div>
+
       {questions.map((question) => (
         <FormGenerator
           defaultValue={question.answered || ''}

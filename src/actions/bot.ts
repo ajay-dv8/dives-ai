@@ -8,7 +8,7 @@ import { onMailer } from './mailer'
 import OpenAi from 'openai'
 
 const openai = new OpenAi({
-  apiKey: process.env.OPEN_AI_KEY,
+  apiKey: process.env.OPEN_AI_KEY!,
 })
 
 export const onStoreConversations = async (
@@ -221,6 +221,7 @@ export const onAiChatBotAssistant = async (
         // TODO: Change localhost to site address after deployment or put it in an env
         // prompt to tell ai what to act as and what to do 
         const chatCompletion = await openai.chat.completions.create({
+          model: 'gpt-3.5-turbo',
           messages: [
             {
               role: 'assistant',
@@ -258,7 +259,6 @@ export const onAiChatBotAssistant = async (
               content: message,
             },
           ],
-          model: 'gpt-3.5-turbo',
         })
 
         // check for realtime and handle switch

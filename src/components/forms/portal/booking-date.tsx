@@ -5,8 +5,7 @@ import { Card, CardDescription } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { APPOINTMENT_TIME_SLOTS } from '@/constants/timeslots'
-import { cn } from '@/lib/utils'
-import React from 'react'
+import { cn } from '@/lib/utils' 
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 type Props = {
@@ -41,6 +40,7 @@ const BookAppointmentDate = ({
         <h2 className="text-4xl font-bold mb-5">Book a meeting</h2>
       </div>
       <div className="flex gap-10 flex-col sm:flex-row">
+
         <div className="w-[300px]">
           <h6>Discovery Call</h6>
           <CardDescription>
@@ -49,6 +49,7 @@ const BookAppointmentDate = ({
             which we can contribute to the success of your company.
           </CardDescription>
         </div>
+
         <div>
           <Calendar
             mode="single"
@@ -57,6 +58,7 @@ const BookAppointmentDate = ({
             className="rounded-md border"
           />
         </div>
+
         <div className="flex flex-col gap-5">
           {APPOINTMENT_TIME_SLOTS.map((slot, key) => (
             <Label
@@ -66,7 +68,7 @@ const BookAppointmentDate = ({
               <Card
                 onClick={() => onSlot(slot.slot)}
                 className={cn(
-                  currentSlot == slot.slot ? 'bg-grandis' : 'bg-peach',
+                  currentSlot == slot.slot ? 'bg-green' : 'bg-green/30',
                   'px-10 py-4',
                   bookings &&
                     bookings.some(
@@ -76,7 +78,7 @@ const BookAppointmentDate = ({
                         booking.slot == slot.slot
                     )
                     ? 'bg-gray-300'
-                    : 'cursor-pointer border-orange hover:bg-grandis transition duration-150 ease-in-out'
+                    : 'cursor-pointer border-green hover:bg-green/70 transition duration-300 ease-in-out'
                 )}
               >
                 <Input
@@ -103,6 +105,7 @@ const BookAppointmentDate = ({
           ))}
         </div>
       </div>
+
       <div className="flex gap-5 justify-center mt-5">
         <Button
           type="button"
@@ -111,10 +114,12 @@ const BookAppointmentDate = ({
         >
           Edit Questions?
         </Button>
+
         <Button>
           <Loader loading={loading}>Book Now</Loader>
         </Button>
       </div>
+
     </div>
   )
 }

@@ -1,10 +1,10 @@
 type IntegrationsListItemProps = {
   id: string
-  name: 'stripe'
-  logo: string
-  description: string
-  title: string
-  modalDescription: string
+  name: 'stripe' | 'mobile money'
+  logo?: string
+  description?: string
+  title?: string
+  modalDescription?: string
 }
 
 export const INTEGRATION_LIST_ITEMS: IntegrationsListItemProps[] = [
@@ -18,4 +18,13 @@ export const INTEGRATION_LIST_ITEMS: IntegrationsListItemProps[] = [
     modalDescription:
       'The world’s most successful platforms and marketplaces including Shopify and DoorDash, use Stripe Connect.',
   },
+
+  // {
+  //   id: '2',
+  //   name: 'mobile money',
+  //   description: 'mobile money allows you to integrate payment with your mobile network service provider',
+  //   logo: '',
+  //   title: 'Connect Mobile Money Account',
+  //   modalDescription: 'Easiest way to make payments straight from your phone'
+  // }
 ]
