@@ -2,11 +2,12 @@
 import { INTEGRATION_LIST_ITEMS } from "@/constants/integrations";
 import Image from "next/image";
 import { Card, CardContent, CardDescription } from "../ui/card";
+import IntegrationTrigger from "./IntegrationTrigger";
 
 interface IntegrationsListProps {
   connections: {
     stripe: boolean;
-    // momo: boolean
+    // mobile money: boolean
   }
 }
 
@@ -28,13 +29,13 @@ export const IntegrationsList = ({ connections }: IntegrationsListProps) => {
                 </div>
                 <h2 className="font-bold capitalize">{item.name}</h2>
               </div>
-              {/* <IntegrationTrigger
+              <IntegrationTrigger
                 connections={connections}
                 title={item.title}
-                descrioption={item.modalDescription}
+                description={item.modalDescription}
                 logo={item.logo}
                 name={item.name}
-              /> */}
+              />
             </div>
             <CardDescription>{item.description}</CardDescription>
           </CardContent>

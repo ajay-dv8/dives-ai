@@ -1,7 +1,8 @@
 type IntegrationsListItemProps = {
   id: string
-  name: 'stripe' | 'mobile money'
-  logo?: string
+  // TODO: name should be stripe or momo
+  name: 'stripe'
+  logo?: string | any
   description?: string
   title?: string
   modalDescription?: string

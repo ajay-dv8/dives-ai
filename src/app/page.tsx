@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/navbar"; 
-import { PortalBanner } from "@/components/portal-banner";
 import { PricingCard } from "@/components/pricing-cards";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -13,7 +12,7 @@ export default function Home() {
 
       <section className="">
         <div className="flex via items-center justify-center flex-col gap-4 mt-18">
-          <span className="text-green text-sm bg-green/20 px-3 py-1 rounded-full text-center">
+          <span className="text-green mt-10 text-sm bg-green/20 px-3 py-1 rounded-full text-center">
             An ai-powered business rep
           </span>
 
@@ -49,9 +48,6 @@ export default function Home() {
 
         <PricingCard />
       </section>
-
-      <PortalBanner/>
-
 
       {/* Feature blog post component here */}
       <div className="h-64 w-full flex justify-center items-center">

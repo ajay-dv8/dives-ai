@@ -174,9 +174,9 @@ export const useChatWindow = () => {
         'assistant'
       )
       //WIP: Remove this line
-      if (message) {
+      // if (message) {
         //remove this
-        setChats((prev) => [...prev, message.message[0]])
+        // setChats((prev) => [...prev, message.message[0]])
         // TODO: uncomment to test real time
         // await onRealTimeChat(
         //   chatRoom!,
@@ -184,7 +184,7 @@ export const useChatWindow = () => {
         //   message.message[0].id,
         //   'assistant'
         // )
-      }
+      // }
     } catch (error) {
       console.log(error)
     }

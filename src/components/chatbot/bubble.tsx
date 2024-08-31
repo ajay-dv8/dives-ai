@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getMonthName } from '@/constants/timeslots'
 
-type BubbleProps = {
+interface BubbleProps {
   message: {
     role: 'assistant' | 'user'
     content: string

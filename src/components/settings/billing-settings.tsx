@@ -1,12 +1,12 @@
 
 import { Check, CheckCircle2, Plus } from 'lucide-react'
 import { pricingCards } from '@/constants/landing-page'
-//import Modal from '../modal'
 // import SubscriptionForm from '../forms/settings/subscription-form'
 import Image from 'next/image' 
 import { onGetSubscriptionPlan } from '@/actions/settings';
 import { SectionLabel } from '../section-label';
 import { Card, CardContent, CardDescription } from '../ui/card';
+import Modal from '../modal';
 
 const BillingSettings = async () => {
   const plan = await onGetSubscriptionPlan() 
@@ -27,11 +27,11 @@ const BillingSettings = async () => {
         />
       </div>
       <div className="lg:col-span-2 flex justify-start lg:justify-center ">
-        {/* <Modal
+        <Modal
           title="Choose A Plan"
           description="Tell us about yourself! What do you do? Let’s tailor your experience so it best suits you."
           trigger={
-            plan && plan === 'STANDARD' ? ( */}
+            plan && plan === 'STANDARD' ? (
               <Card className="border-dashed bg-cream border-gray-400 w-full cursor-pointer h-[270px] flex justify-center items-center">
                 <CardContent className="flex gap-2 items-center">
                   <div className="rounded-full border-2 p-1">
@@ -42,18 +42,19 @@ const BillingSettings = async () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-            {/* ) : ( */}
-              {/* <Image
+            ) : ( 
+              <Image
                 src="/images/creditcard.png"
                 width={400}
                 height={400}
                 alt="image"
-              /> */}
-            {/* )
+              /> 
+            )
           }
         >
-          <SubscriptionForm plan={plan!} />
-        </Modal> */}
+          {/* TODO: uncomment if component is created */}
+          {/* <SubscriptionForm plan={plan!} /> */}
+        </Modal>
       </div>
       {/* show users current plan and features */}
       <div className="lg:col-span-2">

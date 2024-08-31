@@ -64,7 +64,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
       setChat,
       textColor,
       theme,
-      // help,
+      help,
     },
     ref
   ) => {
@@ -96,14 +96,14 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
               )}
             </div>
           </div>
-          {/* <div className="relative w-16 h-16">
-            <Image
+          <div className="relative w-16 h-16">
+            {/* <Image
               src="https://ucarecdn.com/019dd17d-b69b-4dea-a16b-60e0f25de1e9/propuser.png"
               fill
               alt="users"
               objectFit="contain"
-            />
-          </div> */}
+            /> */}
+          </div>
         </div>
         <TabsMenu
           triggers={BOT_TABS_MENU}

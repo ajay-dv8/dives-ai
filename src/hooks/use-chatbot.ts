@@ -23,6 +23,7 @@ export const useChatBot = () => {
   } = useForm<ChatBotMessageProps>({
     resolver: zodResolver(ChatBotMessageSchema),
   })
+
   const [currentBot, setCurrentBot] = useState<
     | {
         name: string
@@ -43,13 +44,15 @@ export const useChatBot = () => {
       }
     | undefined
   >()
+
+  const onOpenChatBot = () => setBotOpened((prev) => !prev)
   const messageWindowRef = useRef<HTMLDivElement | null>(null)
   const [botOpened, setBotOpened] = useState<boolean>(false)
-  const onOpenChatBot = () => setBotOpened((prev) => !prev)
   const [loading, setLoading] = useState<boolean>(true)
   const [onChats, setOnChats] = useState<
     { role: 'assistant' | 'user'; content: string; link?: string }[]
   >([])
+
   const [onAiTyping, setOnAiTyping] = useState<boolean>(false)
   const [currentBotId, setCurrentBotId] = useState<string>()
   const [onRealTime, setOnRealTime] = useState<

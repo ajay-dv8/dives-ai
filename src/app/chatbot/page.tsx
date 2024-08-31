@@ -1,6 +1,5 @@
 import AiChatBot from '@/components/chatbot'
 
-
 const ChatBot = () => {
   return (
     <AiChatBot />
