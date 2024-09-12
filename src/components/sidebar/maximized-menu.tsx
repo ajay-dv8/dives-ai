@@ -1,5 +1,5 @@
 import { SIDE_BAR_MENU } from '@/constants/menu'
-import { LogOut, Menu, MonitorSmartphone } from 'lucide-react'
+import { ArrowLeft, LogOut, MonitorSmartphone } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import DomainMenu from './domain-menu'
@@ -35,7 +35,7 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: MaximizedMenuProps) 
           width={0}
           height={0}
         />
-        <Menu
+        <ArrowLeft
           className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards"
           onClick={onExpand}
         />

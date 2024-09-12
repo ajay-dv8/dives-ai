@@ -3,6 +3,7 @@ import { currentUser } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe'
 
+// dummy data to setup stripe for test
 // init stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET!, {
   typescript: true,

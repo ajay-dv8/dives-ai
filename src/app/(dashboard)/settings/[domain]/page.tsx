@@ -2,6 +2,7 @@ import { onGetCurrentDomainInfo } from "@/actions/settings"
 import BotTrainingForm from "@/components/forms/settings/bot-training";
 import SettingsForm from "@/components/forms/settings/form";
 import { InfoBar } from "@/components/infobar";
+import { ProductTable } from "@/components/products";
 import { redirect } from "next/navigation"; 
 
 interface DomainSettingsProps {
@@ -28,7 +29,10 @@ const DomainSettingsPage = async ({ params }: DomainSettingsProps) => {
           chatBot={domain.domains[0].chatBot}
         />
         {/* id issues fixed  */}
-        <BotTrainingForm id={domain.domains[0].id}/>
+        <BotTrainingForm id={domain.domains[0].id} />
+
+        {/* component to display and sell products */}
+        <ProductTable id={domain.domains[0].id}/>
       </div>
     </div>
   )

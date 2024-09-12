@@ -3,7 +3,7 @@ import {
   onChatBotImageUpdate,
   onCreateFilterQuestions,
   onCreateHelpDeskQuestion,
-  // onCreateNewDomainProduct,
+  onCreateNewDomainProduct,
   onDeleteUserDomain,
   onGetAllFilterQuestions,
   onGetAllHelpDeskQuestions, 
@@ -16,8 +16,8 @@ import {
   ChangePasswordSchema,
 } from '@/schemas/auth.schema' 
 import {
-  // AddProductProps,
-  // AddProductSchema,
+  AddProductProps,
+  AddProductSchema,
   DomainSettingsProps,
   DomainSettingsSchema,
   FilterQuestionsProps,
@@ -283,40 +283,40 @@ export const useFilterQuestions = (id: string) => {
   }
 }
 
-// export const useProducts = (domainId: string) => {
-//   const { toast } = useToast()
-//   const [loading, setLoading] = useState<boolean>(false)
-//   const {
-//     register,
-//     reset,
-//     formState: { errors },
-//     handleSubmit,
-//   } = useForm<AddProductProps>({
-//     resolver: zodResolver(AddProductSchema),
-//   })
+export const useProducts = (domainId: string) => {
+  const { toast } = useToast()
+  const [loading, setLoading] = useState<boolean>(false)
+  const {
+    register,
+    reset,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<AddProductProps>({
+    resolver: zodResolver(AddProductSchema),
+  })
 
-//   const onCreateNewProduct = handleSubmit(async (values) => {
-//     try {
-//       setLoading(true)
-//       const uploaded = await upload.uploadFile(values.image[0])
-//       const product = await onCreateNewDomainProduct(
-//         domainId,
-//         values.name,
-//         uploaded.uuid,
-//         values.price
-//       )
-//       if (product) {
-//         reset()
-//         toast({
-//           title: 'Success',
-//           description: product.message,
-//         })
-//         setLoading(false)
-//       }
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   })
+  const onCreateNewProduct = handleSubmit(async (values) => {
+    try {
+      setLoading(true)
+      const uploaded = await upload.uploadFile(values.image[0])
+      const product = await onCreateNewDomainProduct(
+        domainId,
+        values.name,
+        uploaded.uuid,
+        values.price
+      )
+      if (product) {
+        reset()
+        toast({
+          title: 'Success',
+          description: product.message,
+        })
+        setLoading(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  })
 
-//   return { onCreateNewProduct, register, errors, loading }
-// }
+  return { onCreateNewProduct, register, errors, loading }
+}
