@@ -10,10 +10,18 @@ import { CreateProductForm } from "./product-form"
 
 
 type ProductTableProps = {
+  products: {
+    id: string
+    name: string
+    price: number
+    image: string
+    createdAt: Date
+    domainId: string | null
+  }[]
   id: string
 }
 
-export const ProductTable = ({ id }: ProductTableProps) => {
+export const ProductTable = ({ id, products }: ProductTableProps) => {
   return (
     <div>
       <div>
@@ -57,10 +65,8 @@ export const ProductTable = ({ id }: ProductTableProps) => {
           </div>
         }
       >
-        <TabsContent value="All products">
-
-          Products
-          {/* <DataTable headers={['Featured Image', 'Name', 'Pricing', 'Created']}>
+        <TabsContent value="All products"> 
+          <DataTable headers={['Featured Image', 'Name', 'Pricing', 'Created']}>
             {products.map((product) => (
               <TableRow key={product.id}>
                 <TableCell>
@@ -80,7 +86,7 @@ export const ProductTable = ({ id }: ProductTableProps) => {
                 </TableCell>
               </TableRow>
             ))}
-          </DataTable> */}
+          </DataTable>
         </TabsContent>
       </TabsMenu>
     </div>

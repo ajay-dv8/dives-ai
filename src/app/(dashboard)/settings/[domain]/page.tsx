@@ -32,7 +32,10 @@ const DomainSettingsPage = async ({ params }: DomainSettingsProps) => {
         <BotTrainingForm id={domain.domains[0].id} />
 
         {/* component to display and sell products */}
-        <ProductTable id={domain.domains[0].id}/>
+        <ProductTable 
+          id={domain.domains[0].id} 
+          products={domain.domains[0].products || []}
+        />
       </div>
     </div>
   )
