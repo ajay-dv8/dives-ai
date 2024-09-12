@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-// import {
-//   onCreateCustomerPaymentIntentSecret,
-//   onGetStripeClientSecret,
-//   onUpdateSubscription,
-// } from '@/actions/stripe'
+import {
+  onCreateCustomerPaymentIntentSecret,
+  onGetStripeClientSecret,
+  onUpdateSubscription,
+} from '@/actions/stripe'
 import { useToast } from '@/components/ui/use-toast'
 import axios from 'axios'
-// import {
-//   useElements,
-//   useStripe as useStripeHook,
-// } from '@stripe/react-stripe-js'
+import {
+  useElements,
+  useStripe as useStripeHook,
+} from '@stripe/react-stripe-js'
 import { useRouter } from 'next/navigation'
 
 export const useStripe = () => {
@@ -33,76 +33,77 @@ export const useStripe = () => {
   return { onStripeConnect, onStripeAccountPending }
 }
 
-// export const useStripeCustomer = (amount: number, stripeId: string) => {
-// const [stripeSecret, setStripeSecret] = useState<string>('')
-//   const [loadForm, setLoadForm] = useState<boolean>(false)
+export const useStripeCustomer = (amount: number, stripeId: string) => {
+const [stripeSecret, setStripeSecret] = useState<string>('')
+  const [loadForm, setLoadForm] = useState<boolean>(false)
 
-//   const onGetCustomerIntent = async (amount: number) => {
-//     try {
-//       setLoadForm(true)
-//       const intent = await onCreateCustomerPaymentIntentSecret(amount, stripeId)
-//       if (intent) {
-//         setLoadForm(false)
-//         setStripeSecret(intent.secret!)
-//       }
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
+  const onGetCustomerIntent = async (amount: number) => {
+    try {
+      setLoadForm(true)
+      const intent = await onCreateCustomerPaymentIntentSecret(amount, stripeId)
+      if (intent) {
+        setLoadForm(false)
+        setStripeSecret(intent.secret!)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-//   useEffect(() => {
-//     onGetCustomerIntent(amount)
-//   }, [])
+  useEffect(() => {
+    onGetCustomerIntent(amount)
+  }, [])
 
-//   return { stripeSecret, loadForm }
-// }
+  return { stripeSecret, loadForm }
+}
 
-// export const useCompleteCustomerPayment = (onNext: () => void) => {
-//   const [processing, setProcessing] = useState<boolean>(false)
-//   const { toast } = useToast()
-//   const stripe = useStripeHook()
-//   const elements = useElements()
+export const useCompleteCustomerPayment = (onNext: () => void) => {
+  const [processing, setProcessing] = useState<boolean>(false)
+  const { toast } = useToast()
+  const stripe = useStripeHook()
+  const elements = useElements()
 
-//   const onMakePayment = async (e: React.MouseEvent) => {
-//     e.preventDefault()
-//     if (!stripe || !elements) {
-//       return null
-//     }
+  const onMakePayment = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (!stripe || !elements) {
+      return null
+    }
 
-//     console.log('no reload')
+    console.log('no reload')
 
-//     try {
-//       setProcessing(true)
+    try {
+      setProcessing(true)
 
 //       // TODO: change localhost to site address on prod.
-//       const { error, paymentIntent } = await stripe.confirmPayment({
-//         elements,
-//         confirmParams: {
-//           return_url: 'http://localhost:3000/settings',
-//         },
-//         redirect: 'if_required',
-//       })
+      const { error, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          // TODO: change settings to thankyou or dashboard page
+          return_url: 'http://localhost:3000/settings',
+        },
+        redirect: 'if_required',
+      })
 
-//       if (error) {
-//         console.log(error)
-//       }
+      if (error) {
+        console.log(error)
+      }
 
-//       if (paymentIntent?.status === 'succeeded') {
-//         toast({
-//           title: 'Success',
-//           description: 'Payment complete',
-//         })
-//         onNext()
-//       }
+      if (paymentIntent?.status === 'succeeded') {
+        toast({
+          title: 'Success',
+          description: 'Payment complete',
+        })
+        onNext()
+      }
 
-//       setProcessing(false)
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
+      setProcessing(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-//   return { processing, onMakePayment }
-// }
+  return { processing, onMakePayment }
+}
 
 // export const useSubscriptions = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 //   const [loading, setLoading] = useState<boolean>(false)

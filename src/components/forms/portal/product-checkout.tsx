@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { loadStripe } from '@stripe/stripe-js'
-import { useStripeCustomer } from '@/hooks/billing/use-billing'
+import { useStripeCustomer } from '@/hooks/use-billing'
 import { Loader } from '@/components/loader'
 import { Card } from '@/components/ui/card'
 import { Elements } from '@stripe/react-stripe-js'
