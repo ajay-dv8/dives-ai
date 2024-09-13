@@ -78,7 +78,7 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
               href={`/settings/${domain.name.split('.')[0]}`}
               key={domain.id}
               className={cn(
-                'flex gap-3 items-center justify-center hover:bg-green/40 rounded-full transition duration-100 ease-in-out cursor-pointer ',
+                'flex gap-3 hover:bg-green/40 rounded-full transition duration-100 ease-in-out cursor-pointer ',
                 !min ? 'p-2' : 'py-2',
                 domain.name.split('.')[0] == isDomain && 'bg-white'
               )}
