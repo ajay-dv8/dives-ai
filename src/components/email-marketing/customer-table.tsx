@@ -1,5 +1,4 @@
-'use client'
-import React from 'react'
+'use client' 
 import { DataTable } from '../table'
 import { EMAIL_MARKETING_HEADER } from '@/constants/menu'
 import { TableCell, TableRow } from '../ui/table'

@@ -1,5 +1,4 @@
-import { useAnswers } from '@/hooks/email-marketing/use-marketing'
-import React from 'react'
+import { useAnswers } from '@/hooks/email-marketing/use-marketing' 
 import { Loader } from '../loader'
 import { CardDescription } from '../ui/card'
 

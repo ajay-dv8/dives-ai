@@ -4,14 +4,15 @@ import React from 'react'
 import { CustomerTable } from './customer-table'
 import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
-import Modal from '../mondal'
 import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'
 import { Loader } from '../loader'
 import FormGenerator from '../forms/form-generator'
-import { cn, getMonthName } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import CalIcon from '@/icons/cal-icon'
 import PersonIcon from '@/icons/person-icon'
 import { EditEmail } from './edit-email'
+import { getMonthName } from '@/constants/timeslots'
+import Modal from '../modal'
 
 type Props = {
   domains: {

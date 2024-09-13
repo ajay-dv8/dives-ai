@@ -1,6 +1,4 @@
-'use client'
-import React from 'react'
-
+'use client' 
 import { Button } from '../ui/button'
 import { Loader } from '../loader'
 import {
