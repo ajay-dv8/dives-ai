@@ -5,9 +5,8 @@ import { useSignUpForm } from '@/hooks/sign-up/use-sign-up'
 import Link from 'next/link'
 import { useFormContext } from 'react-hook-form'
 
-type Props = {}
 
-const ButtonHandler = (props: Props) => {
+const ButtonHandler = () => {
   // get te registration step te user is currently on
   const { setCurrentStep, currentStep } = useAuthContextHook()
   // get the form context to keep track of te form

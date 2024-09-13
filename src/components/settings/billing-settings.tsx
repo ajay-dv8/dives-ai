@@ -1,12 +1,12 @@
 
 import { Check, CheckCircle2, Plus } from 'lucide-react'
-import { pricingCards } from '@/constants/landing-page'
-// import SubscriptionForm from '../forms/settings/subscription-form'
+import { pricingCards } from '@/constants/landing-page' 
 import Image from 'next/image' 
 import { onGetSubscriptionPlan } from '@/actions/settings';
 import { SectionLabel } from '../section-label';
 import { Card, CardContent, CardDescription } from '../ui/card';
 import Modal from '../modal';
+import SubscriptionForm from '../forms/settings/subscription-form';
 
 const BillingSettings = async () => {
   const plan = await onGetSubscriptionPlan() 
@@ -52,8 +52,7 @@ const BillingSettings = async () => {
             )
           }
         >
-          {/* TODO: uncomment if component is created */}
-          {/* <SubscriptionForm plan={plan!} /> */}
+          <SubscriptionForm plan={plan!} />
         </Modal>
       </div>
       {/* show users current plan and features */}

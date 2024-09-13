@@ -74,6 +74,7 @@ export const onUpdateSubscription = async (
   }
 }
 
+// TODO: PLAN AMOUNT
 const setPlanAmount = (item: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
   if (item == 'PRO') {
     return 1500
