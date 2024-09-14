@@ -66,7 +66,7 @@ const HelpDesk = ({ id }: helpDeskProp) => {
 
           <Button
             type="submit"
-            className="bg-green/70 hover:bg-orange hover:opacity-70 transition duration-150 ease-in-out text-white font-semibold"
+            className="bg-green/80 hover:bg-green/70 hover:opacity-70 transition duration-150 ease-in-out text-white font-semibold"
           >
             Create
           </Button>
