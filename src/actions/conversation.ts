@@ -155,15 +155,15 @@ export const onRealTimeChat = async (
   id: string,
   role: 'assistant' | 'user'
 ) => {
-  // TODO: setup realtime mode
+  
   // Trigger a realtime event to update the chatroom with a new message 
-  // pusherServer.trigger(chatroomId, 'realtime-mode', {
-  //   chat: {
-  //     message,
-  //     id,
-  //     role,
-  //   },
-  // })
+  pusherServer.trigger(chatroomId, 'realtime-mode', {
+    chat: {
+      message,
+      id,
+      role,
+    },
+  })
 }
 
 // Function for the chat room owner to send a message

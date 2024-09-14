@@ -146,24 +146,24 @@ export const useChatWindow = () => {
    * realtime sockets to enable realtime mode
   */
     // TODO: setup pusher 
-  // useEffect(() => {
-  //   // when a new message is received in the chat room, pusherClient will trigger this function
-  //   if (chatRoom) {
-  //     // if theres a chat room use pusherClient for that chat room 
-  //     pusherClient.subscribe(chatRoom)
-  //     // bind the 'realtime-mode' event to the chat room and get chat data.
-  //     pusherClient.bind('realtime-mode', (data: any) => {
-  //       // 
-  //       setChats((prev) => [...prev, data.chat])
-  //     })
+  useEffect(() => {
+    // when a new message is received in the chat room, pusherClient will trigger this function
+    if (chatRoom) {
+      // if theres a chat room use pusherClient for that chat room 
+      pusherClient.subscribe(chatRoom)
+      // bind the 'realtime-mode' event to the chat room and get chat data.
+      pusherClient.bind('realtime-mode', (data: any) => {
+        // 
+        setChats((prev) => [...prev, data.chat])
+      })
 
-  //     // unsubscribe from the chat room when the component is unmounted
-  //     return () => {
-  //       pusherClient.unbind('realtime-mode')
-  //       pusherClient.unsubscribe(chatRoom)
-  //     }
-  //   }
-  // }, [chatRoom])
+      // unsubscribe from the chat room when the component is unmounted
+      return () => {
+        pusherClient.unbind('realtime-mode')
+        pusherClient.unsubscribe(chatRoom)
+      }
+    }
+  }, [chatRoom])
 
   const onHandleSentMessage = handleSubmit(async (values) => {
     try {
@@ -173,18 +173,16 @@ export const useChatWindow = () => {
         values.content,
         'assistant'
       )
-      //WIP: Remove this line
-      // if (message) {
-        //remove this
-        // setChats((prev) => [...prev, message.message[0]])
-        // TODO: uncomment to test real time
-        // await onRealTimeChat(
-        //   chatRoom!,
-        //   message.message[0].message,
-        //   message.message[0].id,
-        //   'assistant'
-        // )
-      // }
+      if (message) {
+        //WIP: Remove this line
+        setChats((prev) => [...prev, message.message[0]]) 
+        await onRealTimeChat(
+          chatRoom!,
+          message.message[0].message,
+          message.message[0].id,
+          'assistant'
+        )
+      }
     } catch (error) {
       console.log(error)
     }
