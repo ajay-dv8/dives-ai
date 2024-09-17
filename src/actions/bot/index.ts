@@ -160,7 +160,7 @@ export const onAiChatBotAssistant = async (
             console.log('got a new customer')
             const response = {
               role: 'assistant',
-              content: `yo sup ${
+              content: `hello ${
                 customerEmail.split('@')[0]
               }! I'm glad to connect with you. Is there anything you need help with?`,
             }

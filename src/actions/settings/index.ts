@@ -45,7 +45,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
         // check if user is creating domain under active plan
         // and sets the number of domains allowed for that plan 
         (subscription?.subscription?.plan == 'STANDARD' &&
-          subscription._count.domains < 1) ||
+          subscription._count.domains < 2) ||
         (subscription?.subscription?.plan == 'PRO' &&
           subscription._count.domains < 5) ||
         (subscription?.subscription?.plan == 'ULTIMATE' &&

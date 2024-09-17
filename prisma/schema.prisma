@@ -164,8 +164,7 @@ model Product {
   domainId  String?  @db.Uuid
 }
 
-//TODO: Abu change standard to free plan 
-// change applys to settings in actions folder
+
 enum Plans {
   STANDARD
   PRO

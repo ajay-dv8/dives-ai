@@ -1,7 +1,5 @@
 import { SIDE_BAR_MENU } from '@/constants/menu'
 
-import React from 'react'
-
 import { LogOut, MonitorSmartphone } from 'lucide-react'
 import { MenuLogo } from '@/icons/menu-logo'
 import MenuItem from './menu-item'

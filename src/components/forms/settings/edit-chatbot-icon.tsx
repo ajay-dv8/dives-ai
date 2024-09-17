@@ -17,7 +17,7 @@ type EditChatbotProps = {
   } | null
 }
 
-// allow user to to change the icon of the chatbar
+//TODO: allow user to to change the icon of the chatbar
 const EditChatbotIcon = ({ register, errors, chatBot }: EditChatbotProps) => {
   return (
     <div className="py-5 flex flex-col gap-5 items-start">
@@ -40,7 +40,7 @@ const EditChatbotIcon = ({ register, errors, chatBot }: EditChatbotProps) => {
           />
         </div>
       ) : (
-        <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-grandis">
+        <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-green/70">
           <BotIcon />
         </div>
       )}

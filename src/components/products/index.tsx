@@ -23,7 +23,7 @@ type ProductTableProps = {
 
 export const ProductTable = ({ id, products }: ProductTableProps) => {
   return (
-    <div>
+    <div className="my-2">
       <div>
         <h2 className="font-bold text-2xl ">Products Store</h2>
         <p className="text-sm font-light mt-2 mb-5">
@@ -77,8 +77,8 @@ export const ProductTable = ({ id, products }: ProductTableProps) => {
                     alt="image"
                   />
                 </TableCell>
-                <TableCell>${product.name}</TableCell>
-                <TableCell>{product.price}</TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>Ghc.{' '}{product.price}</TableCell>
                 <TableCell className="text-right">
                   {product.createdAt.getDate()}{' '}
                   {getMonthName(product.createdAt.getMonth())}{' '}

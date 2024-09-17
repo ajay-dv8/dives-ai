@@ -40,12 +40,12 @@ const Dashboard = async () => {
             title="Appointments"
             icon={<CalIcon />}
           />
-          <DashboardCard
+          {/* <DashboardCard
             value={sales || 0}
             sales
             title="Total Sales"
             icon={<DollarSign />}
-          />
+          /> */}
         </div>
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 py-10">
@@ -56,6 +56,7 @@ const Dashboard = async () => {
                 A detailed overview of your metrics, usage, customers and more
               </p>
             </div>
+
             <PlanUsage
               plan={plan?.plan!}
               credits={plan?.credits || 0}
@@ -63,6 +64,7 @@ const Dashboard = async () => {
               clients={clients || 0}
             />
           </div>
+
           <div className="flex flex-col">
             <div className="w-full flex justify-between items-start mb-5">
               <div className="flex gap-3 items-center">
@@ -71,6 +73,7 @@ const Dashboard = async () => {
               </div>
               <p className="text-sm">See more</p>
             </div>
+
             <Separator orientation="horizontal" />
             {transactions &&
               transactions.data.map((transaction) => (
@@ -86,9 +89,9 @@ const Dashboard = async () => {
                   </p>
                 </div>
               ))}
+
           </div>
         </div>
-
       </div>
       
     </>

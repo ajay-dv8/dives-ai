@@ -22,7 +22,7 @@ export const PlanUsage = ({
         credits={credits}
       />
       <ProgressBar
-        end={plan == 'STANDARD' ? 1 : plan == 'PRO' ? 2 : 100}
+        end={plan == 'STANDARD' ? 2 : plan == 'PRO' ? 2 : 100}
         label="Domains"
         credits={domains}
       />
