@@ -17,12 +17,13 @@ const CustomerSignUpForm = async ({ params }: CustomerSignUpProps) => {
     <div>
       <PortalForm
         type="Appointment"
+        bookings={bookings}
         email={questions.email!}
         domainid={params.domainid}
-        bookings={bookings}
         customerId={params.customerid}
         questions={questions.questions}
       />
     </div>
   )
 }
+export default CustomerSignUpForm;

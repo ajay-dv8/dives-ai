@@ -45,7 +45,9 @@ export const CustomerTable = ({
                 )}
               />
             </TableCell>
+
             <TableCell>{c.email}</TableCell>
+
             <TableCell>
               <SideSheet
                 title="Answers"

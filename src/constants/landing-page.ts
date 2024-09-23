@@ -14,7 +14,7 @@ export const pricingCards = [
   {
     title: 'Ultimate',
     description: 'The ultimate agency kit',
-    price: 'Ghc.179.99',
+    price: 'Ghc.169.99',
     duration: 'month',
     highlight: 'Key features',
     features: [' Unlimited domain ', '500 Contacts', '500 Emails'],

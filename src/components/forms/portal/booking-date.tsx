@@ -37,16 +37,16 @@ const BookAppointmentDate = ({
   return (
     <div className="flex flex-col gap-5 justify-center">
       <div className="flex justify-center">
-        <h2 className="text-4xl font-bold mb-5">Book a meeting</h2>
+        <h2 className="text-4xl text-gray-700 font-bold mb-5">Book a meeting</h2>
       </div>
       <div className="flex gap-10 flex-col sm:flex-row">
 
         <div className="w-[300px]">
           <h6>Discovery Call</h6>
           <CardDescription>
-            During this call, we aim to explore potential avenues for
+            We aim to explore potential avenues for
             partnership, promotional opportunities, or any other means through
-            which we can contribute to the success of your company.
+            which we can contribute to your success.
           </CardDescription>
         </div>
 

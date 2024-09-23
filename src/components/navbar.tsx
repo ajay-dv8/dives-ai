@@ -13,19 +13,19 @@ export const Navbar = () => {
             width: '20%',
             height: 'auto',
           }}
-          width={0}
+          width={0} 
           height={0}
         />
         <p className="">Dives AI</p>
       </div>
       
-      <ul className="gap-5 justify-between self-stretch my-auto text-sm leading-5 text-neutral-700 max-md:flex-wrap max-md:max-w-full font-normal hidden md:flex">
+      {/* <ul className="gap-5 justify-between self-stretch my-auto text-sm leading-5 text-neutral-700 max-md:flex-wrap max-md:max-w-full font-normal hidden md:flex">
         <Link href="#">Home</Link>
         <Link href="#">Pricing</Link>
         <Link href="#">News Room</Link>
         <Link href="#">Features</Link>
         <Link href="#">Contact us</Link>
-      </ul>
+      </ul> */}
 
       {/* settings route is from dashboard */}
       {/* TODO: Ajay fix directory system for dashboard route if possible */}
