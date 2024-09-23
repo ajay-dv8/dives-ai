@@ -71,6 +71,7 @@ const EmailMarketing = ({ campaign, domains, subscription }: Props) => {
           <Button
             disabled={isSelected.length == 0}
             onClick={onAddCustomersToCampaign}
+            className='bg-green/70 border-green hover:bg-green'
           >
             <Plus /> Add to campaign
           </Button>

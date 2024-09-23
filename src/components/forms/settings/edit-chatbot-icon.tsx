@@ -3,8 +3,7 @@ import { SectionLabel } from '@/components/section-label'
 import UploadButton from '@/components/upload-button'
 import { BotIcon } from '@/icons/bot-icon'
 
-import Image from 'next/image'
-import React from 'react'
+import Image from 'next/image' 
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 
 type EditChatbotProps = {
@@ -25,11 +24,7 @@ const EditChatbotIcon = ({ register, errors, chatBot }: EditChatbotProps) => {
         label="Chatbot icon"
         message="Change the icon for the chatbot."
       />
-      <UploadButton
-        label="Edit Image"
-        register={register}
-        errors={errors}
-      />
+      
       {chatBot?.icon ? (
         <div className="rounded-full overflow-hidden">
           <Image
@@ -44,6 +39,12 @@ const EditChatbotIcon = ({ register, errors, chatBot }: EditChatbotProps) => {
           <BotIcon />
         </div>
       )}
+
+      <UploadButton
+        label="Edit Image"
+        register={register}
+        errors={errors}
+      />
     </div>
   )
 }

@@ -8,7 +8,7 @@ export const BreadCrumps = () => {
   return (
     <div className="flex flex-col">
       <div className="flex gap-5 items-center">
-        <h2 className="flex text-xl font-bold gap-5 items-center">{page}</h2>
+        <h2 className="flex text-xl font-bold gap-5 items-center capitalize">{page}</h2>
         {/* if on conversation page render switch component */}
         {page === 'conversation' && chatRoom && (
           <Loader

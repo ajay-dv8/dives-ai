@@ -41,7 +41,7 @@ export const CustomerTable = ({
                 onClick={() => onSelect(c.email as string)}
                 className={cn(
                   'rounded-full w-5 h-5 border-4 cursor-pointer',
-                  select.includes(c.email as string) ? 'bg-green/80' : 'bg-peach'
+                  select.includes(c.email as string) ? 'bg-green/80' : 'bg-gray-200'
                 )}
               />
             </TableCell>

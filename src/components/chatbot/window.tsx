@@ -1,7 +1,6 @@
 import { ChatBotMessageProps } from '@/schemas/conversation.schema'
 import { forwardRef } from 'react'
-import { UseFormRegister } from 'react-hook-form'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { UseFormRegister } from 'react-hook-form' 
 import RealTimeMode from './real-time' 
 import { BOT_TABS_MENU } from '@/constants/menu' 
 import { TabsContent } from '../ui/tabs'
@@ -16,6 +15,9 @@ import { CardDescription, CardTitle } from '../ui/card'
 import UploadButton from '../upload-button'
 import { TabsMenu } from '../tabs'
 import { Accordion } from '../accordion'
+import Link from 'next/link'
+import { BotIcon } from '@/icons/bot-icon'
+import Image from 'next/image' 
 
 type Props = {
   errors: any
@@ -33,6 +35,13 @@ type Props = {
         mode: boolean
       }
     | undefined
+
+    chatBot: {
+      id: string
+      icon: string | null
+      welcomeMessage: string | null
+    } | null
+
   helpdesk: {
     id: string
     question: string
@@ -60,9 +69,10 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
       onResponding,
       domainName,
       helpdesk,
-      realtimeMode,
+      realtimeMode, 
       setChat,
       textColor,
+      chatBot,
       theme,
       help,
     },
@@ -70,24 +80,32 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
   ) => {
     console.log(errors)
     return (
-      <div className="h-[39.5rem] w-[25rem] flex flex-col bg-gray-300 rounded-xl mr-[1rem] border-green/70 border-[1px] overflow-hidden">
+      <div className="h-[39.3rem] w-[24rem] flex flex-col bg-gray-300 rounded-xl mr-[1rem] border-green/70 border-[1px] overflow-hidden">
         <div className="flex justify-between px-4 pt-4">
           
           <div className="flex gap-2">
-            <Avatar className="size-20">
-              <AvatarImage
-                src="https://github.com/shadcn.png"
-                alt="@shadcn"
-              />
-              <AvatarFallback>AI</AvatarFallback>
-            </Avatar>
+            
+            {chatBot?.icon ? (
+              <div className="rounded-full overflow-hidden">
+                <Image
+                  src={`https://ucarecdn.com/${chatBot.icon}/`}
+                  alt="bot"
+                  width={80}
+                  height={80}
+                />
+              </div>
+            ) : (
+              <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-green/70">
+                <BotIcon />
+              </div>
+            )}
 
             <div className="flex items-start flex-col">
               <h3 className="text-lg font-bold leading-none">
-                Sales Rep - Dives AI
+                Sales Rep - {domainName.split('.com')[0]}
               </h3>
+              <p className="text-sm ">Dives AI</p>
 
-              <p className="text-sm">{domainName.split('.com')[0]}</p>
               {realtimeMode?.mode && (
                 <RealTimeMode
                   setChats={setChat}
@@ -96,18 +114,11 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
               )}
             </div>
           </div>
-          <div className="relative w-16 h-16">
-            {/* <Image
-              src="https://ucarecdn.com/019dd17d-b69b-4dea-a16b-60e0f25de1e9/propuser.png"
-              fill
-              alt="users"
-              objectFit="contain"
-            /> */}
-          </div>
+
         </div>
         <TabsMenu
           triggers={BOT_TABS_MENU}
-          className=" bg-transparent border-[1px] border-green/70 m-2 p-0"
+          className="bg-transparent border-[1px] border-green/70 m-2 p-0"
         >
           <TabsContent value="chat">
             <Separator orientation="horizontal" />
@@ -184,9 +195,9 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
             </div>
           </TabsContent>
         </TabsMenu>
-        <div className="flex justify-center ">
+        <Link href='' className="flex justify-center ">
           <p className="text-gray-400 text-xs">Powered By Dives AI</p>
-        </div>
+        </Link>
       </div>
     )
   }

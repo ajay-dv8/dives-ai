@@ -8,16 +8,6 @@ import { useClerk } from '@clerk/nextjs'
 
 /**
  * A custom React hook that provides state and functionality related to the sidebar in the application.
- * 
- *     An object containing the following properties:
- *   - `expand`: A boolean indicating whether the sidebar is expanded or not.
- *   - `onExpand`: A function that toggles the expanded state of the sidebar.
- *   - `page`: The current page path.
- *   - `onSignOut`: A function that signs the user out and redirects them to the home page.
- *   - `realtime`: A boolean indicating whether the current conversation is in realtime mode.
- *   - `onActivateRealtime`: A function that toggles the realtime mode of the current conversation.
- *   - `chatRoom`: The current chat room.
- *   - `loading`: A boolean indicating whether the current conversation mode is being loaded.
  */
 const useSideBar = () => {
 

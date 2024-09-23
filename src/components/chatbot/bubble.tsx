@@ -31,14 +31,14 @@ const Bubble = ({ message, createdAt }: BubbleProps) => {
         <Avatar className="w-5 h-5">
           <AvatarImage
             src="https://github.com/shadcn.png"
-            alt="@shadcn"
+            alt="ai"
           />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       ) : (
         <Avatar className="w-5 h-5">
           <AvatarFallback>
-            <User />
+            <User className='m-1'/>
           </AvatarFallback>
         </Avatar>
       )}

@@ -30,7 +30,7 @@ export const Navbar = () => {
       {/* settings route is from dashboard */}
       {/* TODO: Ajay fix directory system for dashboard route if possible */}
       <Link
-        href="/settings"
+        href="/dashboard"
         className="bg-green/50 font-normal px-4 py-[2px] text-white hover:bg-green rounded-full"
       >
         Dashboard

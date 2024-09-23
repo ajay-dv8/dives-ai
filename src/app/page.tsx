@@ -29,7 +29,7 @@ export default function Home() {
             </Button>
 
             {/* <Image
-              src="/images/iphonecorinna.png"
+              src="/images/"
               width={400}
               height={100}
               alt="lpimg"
@@ -46,17 +46,11 @@ export default function Home() {
           We have a straight forward pricing plans tailored to meet your needs. You can get started for free If {" you're"} not ready to commit.
         </p>
 
-        <PricingCard />
+        {/* <PricingCard /> */}
       </section>
 
       {/* Feature blog post component here */}
-      <div className="h-64 w-full flex justify-center items-center">
-        {/* Feature blog post cards here */}  
-        <p className='text-7xl text-green'>
-          Featured Blog Posts
-        </p>
 
-      </div>
     </main>
   );
 }

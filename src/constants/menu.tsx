@@ -27,11 +27,11 @@ export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
     icon: <ChatIcon />,
     path: 'conversation',
   },
-  {
-    label: 'Integrations',
-    icon: <IntegrationsIcon />,
-    path: 'integration',
-  },
+  // {
+  //   label: 'Integrations',
+  //   icon: <IntegrationsIcon />,
+  //   path: 'integration',
+  // },
   {
     label: 'Settings',
     icon: <SettingsIcon />,
@@ -83,9 +83,9 @@ export const HELP_DESK_TABS_MENU: TABS_MENU_PROPS[] = [
 ]
 
 export const APPOINTMENT_TABLE_HEADER = [
-  'Name',
-  'RequestedTime',
-  'Added Time',
+  'E-mail',
+  'Appointment Date/Time',
+  'Booked on',
   'Domain',
 ]
 

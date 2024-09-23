@@ -62,7 +62,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
       <div className="flex flex-col gap-3 mt-5">
         <div className="flex gap-4 items-center">
           <h2 className="font-bold text-2xl">Chatbot Settings</h2>
-          <div className="flex gap-1 bg-cream rounded-full px-3 py-1 text-xs items-center font-bold">
+          <div className="flex gap-1 bg-cream rounded-full dark:text-gray-500 px-3 py-1 text-xs items-center font-bold">
             <PremiumBadge />
             Premium
           </div>
@@ -98,7 +98,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
 
       <div className="flex gap-5 justify-end">
         <Button
-          //onClick={onDeleteDomain}
+          onClick={onDeleteDomain}
           variant="destructive"
           type="button"
           className="px-10 h-[50px]"

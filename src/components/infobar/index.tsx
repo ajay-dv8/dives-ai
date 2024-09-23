@@ -10,13 +10,13 @@ export const InfoBar = () => {
 
       <div className="flex gap-3 items-center">
         <div className="">
-          <Card className="rounded-xl flex gap-3 py-2 px-4 text-ghost">
+          {/* <Card className="rounded-xl flex gap-3 py-2 px-4 text-ghost">
             <Trash />
             <Star />
-          </Card>
+          </Card> */}
         </div>
 
-        <Avatar>
+        {/* <Avatar>
           <AvatarFallback className="bg-green text-white">
             <Headphones />
           </AvatarFallback>
@@ -27,7 +27,7 @@ export const InfoBar = () => {
             alt="avatar"
           />
           <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        </Avatar> */}
       </div>
     </div>
   )

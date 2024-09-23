@@ -18,7 +18,7 @@ const MenuItem = ({ size, path, icon, label, current, onSignOut }: MenuItemProps
         <Link
           onClick={onSignOut}
           className={cn(
-            'flex items-center gap-2 px-1 py-2 rounded-lg my-1',
+            'flex items-center gap-2 px-1 py-2 rounded-lg my-1 hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer',
             !current
               ? 'text-gray-500'
               : current == path

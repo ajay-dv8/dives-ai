@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
-// Define the maximum upload size for files (2MB)
-export const MAX_UPLOAD_SIZE = 1024 * 1024 * 2 // 2MB
+// Define the maximum upload size for files (1MB)
+export const MAX_UPLOAD_SIZE = 1024 * 1024 * 1 // 1MB
 
 // Define the accepted file types for uploads
 export const ACCEPTED_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg', 'svg']
@@ -44,7 +44,7 @@ export const AddDomainSchema = z.object({
   image: z
     .any()
     .refine((files) => files?.[0]?.size <= MAX_UPLOAD_SIZE, { // Check file size
-      message: 'Your file size must be less than 2MB',
+      message: 'Your file size must be less than 1MB',
     })
     .refine((files) => ACCEPTED_FILE_TYPES.includes(files?.[0]?.type), { // Check file type
       message: 'Only JPG, JPEG & PNG are accepted file formats',
@@ -88,7 +88,7 @@ export const DomainSettingsSchema = z
     },
     {
       message:
-        'The file must be less than 2MB, and only PNG, JPEG & JPG files are accepted', 
+        'The file must be less than 1MB, and only PNG, JPEG & JPG files are accepted', 
       path: ['image'],
     }
   )
@@ -113,7 +113,7 @@ export const AddProductSchema = z.object({
   image: z
     .any()
     .refine((files) => files?.[0]?.size <= MAX_UPLOAD_SIZE, { 
-      message: 'Your file size must be less than 2MB',
+      message: 'Your file size must be less than 1MB',
     })
     .refine((files) => ACCEPTED_FILE_TYPES.includes(files?.[0]?.type), { // Check file type
       message: 'Only JPG, JPEG & PNG are accepted file formats',

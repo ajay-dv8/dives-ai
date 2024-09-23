@@ -11,7 +11,7 @@ const page = () => {
       <InfoBar />
 
       <div className="w-full overflow-y-auto chat-window flex flex-1 flex-col gap-10">
-        <BillingSettings />
+        {/* <BillingSettings /> */}
         <DarkModeToggle />
         <ChangePassword />
       </div>
