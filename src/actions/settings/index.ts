@@ -341,11 +341,11 @@ export const onUpdateWelcomeMessage = async (
 
 //  action for when users delete teir domain 
 export const onDeleteUserDomain = async (id: string) => {
-  const user = await currentUser()
-
-  if (!user) return
+  const user = await currentUser();
+  if (!user) return;
 
   try {
+
     //first verify that domain belongs to user
     const validUser = await client.user.findUnique({
       where: {

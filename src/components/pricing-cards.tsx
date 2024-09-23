@@ -41,8 +41,10 @@ export const PricingCard = () => {
                   </div>
                 ))}
               </div>
+              {/* TODO: fix price plan link */}
               <Link
-                href={`/dashboard?plan=${card.title}`}
+                href="#"
+                // href={`/dashboard?plan=${card.title}`}
                 className="bg-green/30 border-green border-2 p-2 w-full text-center font-bold rounded-md hover:bg-green/70 transition-all ease-in-out duration-500"
               >
                 Get Started

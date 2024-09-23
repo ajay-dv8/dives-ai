@@ -5,10 +5,10 @@ import { DomainUpdate } from './domain-update'
 import CodeSnippet from './code-snippet'
 import PremiumBadge from '@/icons/premium-badge'
 import EditChatbotIcon from './edit-chatbot-icon'
-import dynamic from 'next/dynamic'
-import Image from 'next/image'
+import dynamic from 'next/dynamic' 
 import { Button } from '@/components/ui/button'
 import { Loader } from '@/components/loader' 
+import { AlertTriangle } from 'lucide-react'
 
 // used dynamic import for welcome message
 // component will be called/rendered only when needed
@@ -83,28 +83,24 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
               errors={errors}
             />
           </div>
-          
-          {/* <div className="col-span-1 relative ">
-            <Image
-              src="/images/bot-ui.png"
-              className="sticky top-0"
-              alt="bot-ui"
-              width={530}
-              height={769}
-            />
-          </div> */}
         </div>
       </div>
 
       <div className="flex gap-5 justify-end">
-        <Button
-          onClick={onDeleteDomain}
-          variant="destructive"
-          type="button"
-          className="px-10 h-[50px]"
-        >
-          <Loader loading={deleting}>Delete Domain</Loader>
-        </Button>
+        <div className="">
+          <Button
+            onClick={onDeleteDomain}
+            variant="destructive"
+            type="button"
+            className="px-10 h-[50px]"
+          >
+            <Loader loading={deleting}>Delete Domain</Loader>
+          </Button>
+          <p className="flex gap-x-2 mt-3 items-center">
+            <AlertTriangle className='text-red-500'/>
+            Deleted domains <br/> can not be recovered.
+          </p>
+        </div>
         <Button
           type="submit"
           className="w-[100px] h-[50px]"
