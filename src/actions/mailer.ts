@@ -9,8 +9,8 @@ export const onMailer = (email: string) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.NODE_MAILER_EMAIL,
-      pass: process.env.NODE_MAILER_GMAIL_APP_PASSWORD,
+      user: process.env.NODE_MAILER_EMAIL!,
+      pass: process.env.NODE_MAILER_GMAIL_APP_PASSWORD!,
     },
   })
 
@@ -18,7 +18,7 @@ export const onMailer = (email: string) => {
   const mailOptions = {
     to: email,
     subject: 'Realtime Support',
-    text: 'One of your customers on Dives AI, just switched to realtime mode',
+    text: 'One of your customers on Dives AI, just switched to realtime mode, please attend to your customer.  ',
   }
 // send mail to business owner
   transporter.sendMail(mailOptions, function (error, info) {
