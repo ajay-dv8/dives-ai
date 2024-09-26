@@ -23,9 +23,9 @@ const Page = async (props: Props) => {
       </div>
     )
 
-  const bookingsExistToday = domainBookings.bookings.filter(
-    (booking) => booking.date.getDate() === today.getDate()
-  )
+  const bookingsExistToday = domainBookings?.bookings.filter(
+    (booking) => booking?.date.getDate() === today.getDate()
+  );
 
   return (
     <>
@@ -63,7 +63,7 @@ const Page = async (props: Props) => {
 
                       <p className="text-sm">
                         Domain <br />
-                        {booking.Customer?.Domain?.name}
+                        {booking?.Customer?.Domain?.name}
                       </p>
                     </div>
 
