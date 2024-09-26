@@ -36,7 +36,7 @@ type Props = {
       }
     | undefined
 
-    chatBot: {
+    chatBot?: {
       id: string
       icon: string | null
       welcomeMessage: string | null

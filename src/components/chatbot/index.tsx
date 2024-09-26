@@ -39,7 +39,7 @@ const AiChatBot = () => {
           chats={onChats}
           register={register}
           onChat={onStartChatting}
-          onResponding={onAiTyping}
+          onResponding={onAiTyping} 
         />
       )}
       <div

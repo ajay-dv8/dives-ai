@@ -1,7 +1,7 @@
 import { onDomainCustomerResponses, onGetAllDomainBookings } from "@/actions/appointment";
 import PortalForm from "@/components/forms/portal/portal-form";
 
-interface CustomerSignUpProps { params: {
+type CustomerSignUpProps = { params: {
   customerid: string;
   domainid: string;
 }}

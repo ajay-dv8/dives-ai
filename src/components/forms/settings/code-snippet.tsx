@@ -1,14 +1,15 @@
+'use client' 
 import { SectionLabel } from '@/components/section-label'
 import { useToast } from '@/components/ui/use-toast'
-import { Copy } from 'lucide-react' 
+import { Copy } from 'lucide-react'
+import React from 'react'
 
 type Props = {
   id: string
 }
 
 const CodeSnippet = ({ id }: Props) => {
-  const { toast } = useToast();
-  
+  const { toast } = useToast()
   let snippet = `
     const iframe = document.createElement("iframe");
     
@@ -38,13 +39,13 @@ const CodeSnippet = ({ id }: Props) => {
         iframe.height = dimensions.height
         iframe.contentWindow.postMessage("${id}", "http://localhost:3000/")
     })
-  `
+        `
 
   return (
     <div className="mt-10 flex flex-col gap-5 items-start">
       <SectionLabel
         label="Code snippet"
-        message="Copy and paste this code snippet into the script tag of your website"
+        message="Copy and paste this code snippet into your website"
       />
       <div className="bg-cream px-10 rounded-lg inline-block relative">
         <Copy
